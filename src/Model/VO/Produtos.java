@@ -4,17 +4,23 @@ public class Produtos {
 	
 	private String nome;
 	private int codigo;
-	private int codigoTipo;
+	private Tipo tipo;
 	private double preco;
     
     // getters e setters
     
 	public String getNome() {
+		if (nome == null)
+			return "";
 		return nome;
 	}
 	
 	public void setNome(String nome) {
-		this.nome = nome;
+		if (nome != null && !nome.isEmpty()) {
+			this.nome = nome;
+		} else {
+			System.out.println("Nome inválido!");
+		}
 	}
 	
 	public int getCodigo() {
@@ -28,15 +34,15 @@ public class Produtos {
 			System.out.println("Código inválido");
 	}
 	
-	public int getCodigoTipo() {
-		return codigoTipo;
+	public Tipo getTipo() {
+		return tipo;
 	}
 	
-	public void setCodigoTipo(int codigoTipo) {
-		if(codigoTipo>0)
-		   this.codigoTipo = codigoTipo;
+	public void setTipo(Tipo tipo) {
+		if(tipo != null)
+		   this.tipo = tipo;
 		else
-			System.out.println("Código inválido");
+			System.out.println("Tipo inválido");
 	}
 	
 	public double getPreco() {

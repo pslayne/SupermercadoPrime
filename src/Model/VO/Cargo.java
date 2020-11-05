@@ -7,11 +7,16 @@ public class Cargo {
     // getters e setters
     
 	public String getNome() {
+		if (nome == null)
+			return "";
 		return nome;
 	}
 	
 	public void setNome(String nome) {
-		this.nome = nome;
+		if (nome != null && !nome.isEmpty())
+			this.nome = nome;
+		else
+			System.out.println("Nome inválido!");
 	}
 	
 	public int getCodigo() {
@@ -19,6 +24,9 @@ public class Cargo {
 	}
 	
 	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+		if (codigo > 0 )
+			this.codigo = codigo;
+		else 
+			System.out.println("Código inválido!");
 	}
 }

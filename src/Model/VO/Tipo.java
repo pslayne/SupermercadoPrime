@@ -9,19 +9,29 @@ public class Tipo {
     // getters e setters
     
 	public String getNome() {
+		if (nome == null)
+			return "";
 		return nome;
 	}
 	
 	public void setNome(String nome) {
-		this.nome = nome;
+		if (nome != null && !nome.isEmpty()) { 
+			this.nome = nome;
+		} else {
+			System.out.println("Nome inválido!");
+		}
 	}
 	
 	public String getFormaDeVenda() {
+		if (formaDeVenda == null)
+			return "";
 		return formaDeVenda;
 	}
 	
 	public void setFormaDeVenda(String formaDeVenda) {
-		this.formaDeVenda = formaDeVenda;
+		if (formaDeVenda != null && !formaDeVenda.isEmpty()) {
+			this.formaDeVenda = formaDeVenda;
+		}
 	}
 	
 	public int getCodigo() {
@@ -29,7 +39,7 @@ public class Tipo {
 	}
 	
 	public void setCodigo(int codigo) {
-		if(codigo>0)
+		if(codigo > 0)
 		    this.codigo = codigo;
 		else
 			System.out.println("Código inválido");

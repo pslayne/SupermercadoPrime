@@ -2,22 +2,21 @@ package Model.VO;
 
 public class Estoque {
 	
-	private int codigoProduto;
+	private Produtos produto;
 	private int quantidade;
 	private String situacao;
-	private int codigo;
 
     // getters e setters
     
-	public int getCodigoProduto() {
-		return codigoProduto;
+	public Produtos getProduto() {
+		return produto;
 	}
 	
-	public void setCodigoProduto(int codigoProduto) {
-		if(codigoProduto>0)
-		  this.codigoProduto = codigoProduto;
+	public void setProduto(Produtos produto) {
+		if(produto != null)
+		  this.produto = produto;
 		else
-			System.out.println("Código inválido");
+			System.out.println("Produto inválido");
 	}
 	
 	public int getQuantidade() {
@@ -25,22 +24,23 @@ public class Estoque {
 	}
 	
 	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
+		if (quantidade >= 0) 
+			this.quantidade = quantidade;
+		else
+			System.out.println("Quantidade inválida!");
 	}
 	
 	public String getSituacao() {
+		if (situacao == null)
+			return "";
 		return situacao;
 	}
 	
 	public void setSituacao(String situacao) {
-		this.situacao = situacao;
-	}
-	
-	public int getCodigo() {
-		return codigo;
-	}
-	
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+		if (situacao != null && !situacao.isEmpty()) {
+			this.situacao = situacao;
+		} else {
+			System.out.println("Situação inválida!");
+		}
 	}
 }
