@@ -6,6 +6,7 @@ public class ProdutosVO {
 	private int codigo;
 	private TipoVO tipo;
 	private double preco;
+	private float quantidade; 
     
     // getters e setters
     
@@ -54,6 +55,16 @@ public class ProdutosVO {
 		  this.preco = preco;
 		else
 			System.out.println("Preço inválido");
-		
+	}
+	
+	public float getQuantidade() {
+		return quantidade;
+	}
+	
+	public void setQuantidade(float quantidade) {
+		if (quantidade >= 0)
+			this.quantidade = quantidade;
+		else 
+			System.out.println("Quantidade inválida");
 	}
 }

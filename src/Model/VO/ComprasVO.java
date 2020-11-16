@@ -1,18 +1,15 @@
 package Model.VO;
 
-//import Model.VO.ProdutosVO;
 import java.util.Calendar;
 
-public class VendasVO {
+public class ComprasVO {
 	private int codigo;
 	private Calendar data;
 	private Calendar hora;
 	private int quantidadeProdutos;
+	private ProdutosVO[] produtos;
 	private double valor;
-	private FuncionariosVO funcionario;
-	private ProdutosVO produtos[];
-	
-    // getters e setters
+	private GerenteVO gerente;
 	
 	public int getCodigo(){
 		return codigo;
@@ -25,18 +22,7 @@ public class VendasVO {
 			System.out.println("Código inválido");
 	}
 	
-	public Calendar getData() {
-		return data;
-	}
-	
-	public void setData(Calendar data) {
-		if(data != null)
-			this.data = data;
-		else
-			System.out.println("Data inválida!");
-	}
-	
-	//hora
+	//data e hora
 	
 	public int getQuantidadeProdutos() {
 		return quantidadeProdutos;
@@ -49,6 +35,8 @@ public class VendasVO {
 			System.out.println("Quantidade inválida!");
 	}
 	
+	//produtos
+	
 	public double getValor() {
 		return valor;
 	}
@@ -60,26 +48,14 @@ public class VendasVO {
 			System.out.println("Valor inválido!");
 	}
 	
-	public FuncionariosVO getFuncionario() {
-		return funcionario;
+	public GerenteVO getGerente() {
+		return gerente;
 	}
 	
-	public void setFuncionario(FuncionariosVO funcionario) {
-		if (funcionario != null) 
-			this.funcionario = funcionario;
+	public void setGerente(GerenteVO gerente) {
+		if (gerente != null) 
+			this.gerente = gerente;
 		else
-			System.out.println("Funcionário inválido!");
+			System.out.println("Gerente inválido!");
 	}
-	
-	public ProdutosVO[] getProduto() {
-		return produtos;
-	}
-	
-	public void setProduto(ProdutosVO[] produtos) {
-		if (produtos != null)
-			this.produtos = produtos;
-		else
-			System.out.println("Código inválido!");
-	}
-	
 }
