@@ -17,7 +17,7 @@ public class FuncionariosBO {
 		//verifica se o funcionário existe, se sim, atualiza um funcionario 
 	}
 	
-	public static void buscar(FuncionariosVO funcionario) {
+	public static void buscarID(FuncionariosVO funcionario) {
 		//busca entre os funcionarios no banco de dados
 	}
 	

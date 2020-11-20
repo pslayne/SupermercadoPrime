@@ -1,5 +1,6 @@
 package Model.VO;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ComprasVO {
@@ -7,7 +8,7 @@ public class ComprasVO {
 	private Calendar data;
 	private Calendar hora;
 	private int quantidadeProdutos;
-	private ProdutosVO[] produtos;
+	private ArrayList <ProdutosVO> produtos;
 	private double valor;
 	private GerenteVO gerente;
 	
@@ -22,7 +23,23 @@ public class ComprasVO {
 			System.out.println("Código inválido");
 	}
 	
-	//data e hora
+	public String getData() {
+		String d = data.get(Calendar.DATE) + "/" + data.get(Calendar.MONTH) + "/" + data.get(Calendar.YEAR);
+		return d;
+	}
+	
+	public void setData() {
+		data = Calendar.getInstance();
+	}
+	
+	public String getHora() {
+		String h = hora.get(Calendar.HOUR) + ":" + hora.get(Calendar.MINUTE) + ":" + hora.get(Calendar.SECOND);
+		return h;
+	}
+	
+	public void setHora() {
+		hora = Calendar.getInstance();
+	}
 	
 	public int getQuantidadeProdutos() {
 		return quantidadeProdutos;
@@ -35,7 +52,16 @@ public class ComprasVO {
 			System.out.println("Quantidade inválida!");
 	}
 	
-	//produtos
+	public ArrayList <ProdutosVO> getProduto() {
+		return produtos;
+	}
+	
+	public void setProduto(ArrayList <ProdutosVO> produtos) {
+		if (!produtos.isEmpty())
+			this.produtos = produtos;
+		else
+			System.out.println("Produtos inválidos!");
+	}
 	
 	public double getValor() {
 		return valor;

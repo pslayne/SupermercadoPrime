@@ -1,7 +1,6 @@
 package Model.BO;
 
 import Model.VO.*;
-//import Model.BO.*;
 
 public class GerenteBO extends FuncionariosBO{
 	GerenteVO gerente = new GerenteVO();

@@ -1,7 +1,6 @@
 package Model.VO;
 
 public class EnderecoVO {
-	private static String pais = "Brasil";
 	private String estado;
 	private String cidade;
 	private String bairro;
