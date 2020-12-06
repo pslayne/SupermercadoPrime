@@ -17,8 +17,8 @@ public class FuncionariosBO implements InterFuncionariosBO{
 			List<FuncionariosVO> resultado = buscarCPF(funcionario);
 			if(resultado.isEmpty()) 
 				dao.inserir(funcionario);
-			else System.out.println("Este funcion·rio j· existe");
-		} else System.out.println("Funcion·rio inv·lido");
+			else System.out.println("Este funcion√°rio j√° existe");
+		} else System.out.println("Funcion√°rio inv√°lido");
 	}
 
 	public void remover(FuncionariosVO funcionario) {
@@ -26,8 +26,8 @@ public class FuncionariosBO implements InterFuncionariosBO{
 			List<FuncionariosVO> resultado = buscarCPF(funcionario);
 			if(!resultado.isEmpty()) 
 				dao.remover(funcionario);
-			else System.out.println("Este funcion·rio n„o existe");
-		} else System.out.println("Funcion·rio inv·lido");
+			else System.out.println("Este funcion√°rio n√£o existe");
+		} else System.out.println("Funcion√°rio inv√°lido");
 	}
 
 	public void editar(FuncionariosVO funcionario, FuncionariosVO novoFuncionario) {
@@ -35,8 +35,8 @@ public class FuncionariosBO implements InterFuncionariosBO{
 			List<FuncionariosVO> resultado = buscarCPF(funcionario);
 			if(!resultado.isEmpty()) 
 				dao.atualizar(funcionario, novoFuncionario);
-			else System.out.println("Este funcion·rio n„o existe");
-		} else System.out.println("Funcion·rio inv·lido");
+			else System.out.println("Este funcion√°rio n√£o existe");
+		} else System.out.println("Funcion√°rio inv√°lido");
 	}
 
 	public FuncionariosVO buscarID(FuncionariosVO funcionario) {
