@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.InicioController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/Rectangle%2026.png" />
+         </image>
+      </ImageView>
+      <Hyperlink fx:id="inicio" layoutX="41.0" layoutY="78.0" text="Inicio" textFill="#0a0a0a">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="vendas" layoutX="41.0" layoutY="122.0" text="Vendas" textFill="#0d0d0d">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="funcionarios" layoutX="40.0" layoutY="166.0" text="Funcionarios" textFill="#111010">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="estoque" layoutX="41.0" layoutY="212.0" text="Estoque" textFill="#070707">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="fornecedores" layoutX="37.0" layoutY="259.0" text="Fornecedores" textFill="#030303">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Hyperlink>
+      <ImageView fitHeight="4.0" fitWidth="467.0" layoutX="132.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/css%20poo/Line%201.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="16.0" fitWidth="59.0" layoutX="164.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/Início.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="pesquisa" layoutX="443.0" layoutY="17.0" />
+      <ImageView fitHeight="28.0" fitWidth="33.0" layoutX="404.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/Pesquisa.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="28.0" layoutX="14.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/roofing.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/add_shopping_cart.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/supervisor_account.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/all_inbox.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="28.0" layoutX="13.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/shopping_cart.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="136.0" fitWidth="132.0" layoutX="280.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/pngwing%201%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="199.0" layoutX="263.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Pictures/fotos%20pro%20quarto/clipart-guirlandes-de-noel-7.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="263.0" layoutY="287.0" text="Supermercado Prime">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
