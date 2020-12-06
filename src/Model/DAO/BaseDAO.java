@@ -5,9 +5,9 @@ import java.sql.*;
 public abstract class BaseDAO {
 	Connection conn = null;
 	
-	String url = "jdbc:postgresql://localhost:5432/Prime";
+	String url = "jdbc:postgresql://localhost:5433/supermercado_prime";
 	String user = "postgres";
-	String senha = "30317512";
+	String senha = "1234";
 	
 	public Connection getConnection() {
 		if(conn == null) {
