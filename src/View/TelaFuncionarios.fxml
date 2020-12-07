@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerFuncionarios">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../View/VE/Rectangle%2026.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="14.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../View/VE/roofing.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="14.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../View/VE/add_shopping_cart.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="14.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../View/VE/supervisor_account.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="14.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../View/VE/all_inbox.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="14.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../View/VE/shopping_cart.png" />
+         </image>
+      </ImageView>
+      <Hyperlink fx:id="inicio" layoutX="38.0" layoutY="102.0" onAction="#goInicio" text="Inicio">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="vendas" layoutX="38.0" layoutY="151.0" onAction="#goVendas" text="Vendas">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="funcionarios" layoutX="37.0" layoutY="188.0" onAction="#goFuncionarios" text="Funcionarios">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="estoque" layoutX="36.0" layoutY="232.0" onAction="#goEstoque" text="Estoque">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="compras" layoutX="38.0" layoutY="280.0" onAction="#goCompras" text="Compras">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="sair" layoutX="49.0" layoutY="349.0" onAction="#goLogin" prefHeight="25.0" prefWidth="34.0" text="Sair">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Hyperlink>
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="29.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../View/VE/Frame.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="132.0" layoutY="49.0" prefHeight="5.0" prefWidth="744.0" />
+      <ImageView fitHeight="18.0" fitWidth="117.0" layoutX="193.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../View/VE/Funcionários.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="pesquisa" fitHeight="28.0" fitWidth="34.0" layoutX="610.0" layoutY="21.0" onMouseClicked="#pesquisa" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../View/VE/Pesquisa.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="pesquisar" layoutX="649.0" layoutY="23.0" style="-fx-background-radius: 15px;" />
+      <TableView layoutX="155.0" layoutY="75.0" prefHeight="315.0" prefWidth="677.0">
+        <columns>
+          <TableColumn fx:id="id_funcionario" prefWidth="46.0" text="ID_Funcionario" />
+          <TableColumn fx:id="cargo" prefWidth="62.0" text="Cargo" />
+            <TableColumn fx:id="cpf" prefWidth="116.0" text="CPF" />
+            <TableColumn fx:id="nome" prefWidth="115.0" text="Nome" />
+            <TableColumn fx:id="endereco" prefWidth="78.0" text="Endereço" />
+            <TableColumn fx:id="email" prefWidth="91.0" text="Email" />
+            <TableColumn fx:id="dataNasc" prefWidth="63.0" text="DataNasc" />
+            <TableColumn fx:id="login" prefWidth="60.0" text="Login" />
+            <TableColumn fx:id="senha" prefWidth="44.0" text="Senha" />
+        </columns>
+      </TableView>
+   </children>
+</Pane>
