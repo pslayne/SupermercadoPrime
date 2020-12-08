@@ -119,7 +119,7 @@ public class FuncionariosDAO extends BaseDAO{
 		try {
 			ptst = conn.prepareStatement(sql);
 			ptst.setString(1, funcionario.getLogin());
-			ptst.setString(1, funcionario.getSenha());
+			ptst.setString(2, funcionario.getSenha());
 			rs = ptst.executeQuery();
 			
 			return rs;

@@ -14,7 +14,7 @@
          </image>
       </ImageView>
       <Separator layoutX="132.0" layoutY="40.0" prefHeight="17.0" prefWidth="575.0" />
-      <TextField fx:id="pesquisa" layoutX="522.0" layoutY="14.0" style="-fx-background-radius: 15px;" />
+      <TextField fx:id="pesquisa1" layoutX="522.0" layoutY="14.0" style="-fx-background-radius: 15px;" />
       <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="18.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../View/VE/roofing.png" />

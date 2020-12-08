@@ -13,7 +13,7 @@
             <Image url="@../../../View/VE/Rectangle%2026.png" />
          </image>
       </ImageView>
-      <Hyperlink fx:id="inicio" layoutX="41.0" layoutY="78.0" onAction="#goLogin" text="Inicio" textFill="#0a0a0a">
+      <Hyperlink fx:id="inicio" layoutX="41.0" layoutY="78.0" onAction="#goInicio" text="Inicio" textFill="#0a0a0a">
          <font>
             <Font size="14.0" />
          </font>

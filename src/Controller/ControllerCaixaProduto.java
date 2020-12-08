@@ -1,6 +1,6 @@
 package Controller;
 
-import View.*;
+import View.Telas;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -17,6 +17,6 @@ public class ControllerCaixaProduto {
 	}
 	
 	public void cancelar(MouseEvent m){
-		TelaInicialCaixa.launch();
+		Telas.telaInicialCaixa();
 	}
 }

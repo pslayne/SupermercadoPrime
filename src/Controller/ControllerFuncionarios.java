@@ -1,6 +1,6 @@
 package Controller;
 
-import View.*;
+import View.Telas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
@@ -23,26 +23,26 @@ public class ControllerFuncionarios {
 	}
 	
 	public void goInicio(ActionEvent e) {
-		TelaInicial.launch();
+		Telas.telaInicial();
 	}
 	
 	public void goVendas(ActionEvent e) {
-		TelaVendas.launch();
+		Telas.telaVendas();
 	}
 	
 	public void goFuncionarios(ActionEvent e) {
-		TelaFuncionarios.launch();
+		Telas.telaFuncionarios();
 	}
 	
 	public void goEstoque(ActionEvent e) {
-		TelaEstoque.launch();
+		Telas.telaEstoque();
 	}
 	
 	public void goCompras(ActionEvent e) {
-		TelaCompras.launch();
+		Telas.telaCompras();
 	}
 	
 	public void goLogin(ActionEvent e) {
-		TelaLogin.launch();
+		Telas.telaLogin();
 	}
 }

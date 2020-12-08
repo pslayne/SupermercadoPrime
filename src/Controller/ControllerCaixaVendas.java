@@ -1,7 +1,5 @@
 package Controller;
-
-import View.TelaCaixaProduto;
-import View.TelaInicialCaixa;
+import View.Telas;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -12,14 +10,14 @@ public class ControllerCaixaVendas {
 	@FXML private ImageView sair;
 	
 	public void ok(MouseEvent m){
-		TelaInicialCaixa.launch();
+		Telas.telaInicialCaixa();
 	}
 	
 	public void adicionar(MouseEvent m){
-		TelaCaixaProduto.launch();
+		Telas.telaCaixaProduto();
 	}
 	
 	public void sair(MouseEvent m){
-		TelaInicialCaixa.launch();
+		Telas.telaInicialCaixa();
 	}
 }

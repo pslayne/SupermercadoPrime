@@ -1,20 +1,17 @@
 package Controller;
 
-import View.TelaCompras;
-import View.TelaEstoque;
-import View.TelaFuncionarios;
-import View.TelaInicial;
-import View.TelaLogin;
-import View.TelaVendas;
+import View.Telas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class ControllerCompras {
 	@FXML private TextField pesquisar;
-	@FXML private TextField pesquisa;
+	@FXML private TextField pesquisa1;
+	@FXML private ImageView pesquisa;
 	@FXML private Hyperlink inicio;
 	@FXML private Hyperlink vendas;
 	@FXML private Hyperlink funcionarios;
@@ -27,26 +24,26 @@ public void pesquisa(MouseEvent m){
 	}
 	
 	public void goInicio(ActionEvent e) {
-		TelaInicial.launch();
+		Telas.telaInicial();
 	}
 	
 	public void goVendas(ActionEvent e) {
-		TelaVendas.launch();
+		Telas.telaVendas();
 	}
 	
 	public void goFuncionarios(ActionEvent e) {
-		TelaFuncionarios.launch();
+		Telas.telaFuncionarios();
 	}
 	
 	public void goEstoque(ActionEvent e) {
-		TelaEstoque.launch();
+		Telas.telaEstoque();
 	}
 	
 	public void goCompras(ActionEvent e) {
-		TelaCompras.launch();
+		Telas.telaCompras();
 	}
 	
 	public void goLogin(ActionEvent e) {
-		TelaLogin.launch();
+		Telas.telaLogin();
 	}
 }
