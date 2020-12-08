@@ -13,7 +13,7 @@ public class ControllerCaixaProduto {
 	@FXML private ImageView cancelar;
 	
 	public void ok(MouseEvent m){
-		
+		Telas.telaCaixaVendas();
 	}
 	
 	public void cancelar(MouseEvent m){
