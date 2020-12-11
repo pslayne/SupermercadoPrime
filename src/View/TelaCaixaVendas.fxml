@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerCaixaVendas">
+   <children>
+      <Separator layoutY="41.0" prefHeight="11.0" prefWidth="600.0" />
+      <TableView fx:id="produtos" layoutX="23.0" layoutY="67.0" prefHeight="284.0" prefWidth="555.0">
+        <columns>
+          <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="produto" prefWidth="134.0" text="Produto" />
+            <TableColumn fx:id="quantidade" prefWidth="103.0" text="Quantidade" />
+            <TableColumn fx:id="valorUnitario" prefWidth="125.0" text="Valor Unitario(R$)" />
+            <TableColumn fx:id="valorTotal" prefWidth="117.0" text="Valor Total(R$)" />
+        </columns>
+      </TableView>
+      <ImageView fitHeight="20.0" fitWidth="75.0" layoutX="45.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../View/VE/Caixa.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="dataNomeCaixa" layoutX="132.0" layoutY="10.0" prefHeight="29.0" prefWidth="273.0" />
+      <ImageView fx:id="adicionar" fitHeight="35.0" fitWidth="35.0" layoutX="418.0" layoutY="7.0" onMouseClicked="#adicionar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../View/VE/Adicionar%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ok" fitHeight="35.0" fitWidth="35.0" layoutX="464.0" layoutY="7.0" onMouseClicked="#ok" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../View/VE/OK.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="sair" fitHeight="35.0" fitWidth="46.0" layoutX="508.0" layoutY="7.0" onMouseClicked="#sair" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../View/VE/Sair.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="422.0" layoutY="362.0" style="-fx-font-weight: bold;" text="Total" />
+      <Label fx:id="total" layoutX="464.0" layoutY="362.0" prefHeight="17.0" prefWidth="89.0" visible="false" />
+   </children>
+</Pane>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: F9F3F3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="232.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../View/VE/Frame%202%20(1).png" />
+         </image>
+      </ImageView>
+      <Label layoutX="340.0" layoutY="115.0" text="LOGIN:">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="339.0" layoutY="185.0" text="SENHA:">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <TextField fx:id="login" layoutX="337.0" layoutY="138.0" style="-fx-background-radius: 15px;">
+         <effect>
+            <DropShadow color="#dddddd" />
+         </effect>
+      </TextField>
+      <PasswordField fx:id="senha" layoutX="337.0" layoutY="206.0" style="-fx-background-radius: 15px;">
+         <effect>
+            <DropShadow color="#dddddd" />
+         </effect>
+      </PasswordField>
+      <Button fx:id="BotaoLogin" layoutX="337.0" layoutY="248.0" mnemonicParsing="false" onAction="#autenticar" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: FFC582; -fx-background-radius: 15px;" text="ENTRAR" textFill="#171717">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Separator layoutX="223.0" layoutY="283.0" prefHeight="17.0" prefWidth="377.0" />
+      <Hyperlink fx:id="esqueceuSenha" layoutX="339.0" layoutY="290.0" text="ESQUECEU A SENHA?" textFill="#0d0d0d">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Hyperlink>
+      <Label fx:id="erroAutenticacao" layoutX="355.0" layoutY="94.0" text="login ou senha incorretos" textFill="RED" visible="false">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

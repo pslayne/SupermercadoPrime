@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerInicioCaixa">
+   <children>
+      <Separator layoutY="48.0" prefHeight="6.0" prefWidth="600.0" />
+      <ImageView fitHeight="20.0" fitWidth="128.0" layoutX="26.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@VE/Caixa.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="dataNomeCaixa" layoutX="103.0" layoutY="17.0" prefHeight="26.0" prefWidth="374.0" />
+      <ImageView fx:id="adicionar" fitHeight="37.0" fitWidth="46.0" layoutX="488.0" layoutY="11.0" onMouseClicked="#adicionar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@VE/Adicionar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="sair" fitHeight="37.0" fitWidth="37.0" layoutX="537.0" layoutY="11.0" onMouseClicked="#sair" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@VE/Sair.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="vendas" layoutX="26.0" layoutY="83.0" prefHeight="275.0" prefWidth="548.0">
+        <columns>
+          <TableColumn fx:id="idvenda" prefWidth="101.0" text="ID" />
+          <TableColumn fx:id="hora" prefWidth="153.0" text="Hora" />
+            <TableColumn fx:id="numitens" prefWidth="153.0" text="Nº de itens" />
+            <TableColumn fx:id="valor" prefWidth="140.0" text="Valor(R$)" />
+        </columns>
+      </TableView>
+      <ImageView fx:id="expandir" fitHeight="30.0" fitWidth="30.0" layoutX="541.0" layoutY="364.0" onMouseClicked="#expandirItens" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@VE/launch.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="erroSelec" layoutX="233.0" layoutY="54.0" textFill="RED" visible="false" />
+   </children>
+</Pane>

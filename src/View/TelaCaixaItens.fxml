@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerCaixaItens">
+   <children>
+      <Separator layoutY="41.0" prefHeight="11.0" prefWidth="600.0" />
+      <TableView fx:id="produtos" layoutX="23.0" layoutY="80.0" prefHeight="289.0" prefWidth="555.0">
+        <columns>
+          <TableColumn fx:id="ID" prefWidth="67.0" text="ID" />
+          <TableColumn fx:id="produto" prefWidth="142.0" text="Produto" />
+            <TableColumn fx:id="quantidade" prefWidth="103.0" text="Quantidade" />
+            <TableColumn fx:id="valorUnitario" prefWidth="125.0" text="Valor Unitario(R$)" />
+            <TableColumn fx:id="valorTotal" prefWidth="117.0" text="Valor Total(R$)" />
+            <TableColumn prefWidth="75.0" text="Column X" />
+        </columns>
+      </TableView>
+      <ImageView fitHeight="20.0" fitWidth="75.0" layoutX="45.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@VE/Caixa.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="dataNomeCaixa" layoutX="132.0" layoutY="10.0" prefHeight="29.0" prefWidth="168.0" />
+      <ImageView fx:id="sair" fitHeight="35.0" fitWidth="46.0" layoutX="508.0" layoutY="7.0" onMouseClicked="#sair" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@VE/Sair.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
