@@ -4,12 +4,14 @@ public class ProdutosVO {
 	
 	private String nome;
 	private String marca;
+	private String situacao;
 	private int codigo;
 	private TipoVO tipo;
 	private double preco;
 	private double precoTotal;
 	private int quantidadeEstoque;
 	private int quantidadePedido;
+	
 	
     // getters e setters
     
@@ -39,6 +41,20 @@ public class ProdutosVO {
 			this.marca = marca;
 		else
 			System.out.println("Marca inválida!");
+	}
+	
+	public String getSituacao() {
+		return situacao;
+	}
+	
+	public void setSituacao() {
+		if (quantidadeEstoque >= 500)
+			situacao = "Quantidade Alta";
+		else if (quantidadeEstoque >= 100)
+			situacao = "Quantidade Mediana";
+		else if (quantidadeEstoque > 0)
+			situacao = "Quantidade Crítica";
+		else situacao = "Produto fora de estoque";
 	}
 	
 	public int getCodigo() {
@@ -84,9 +100,10 @@ public class ProdutosVO {
 	}
 	
 	public void setQuantidadeEstoque(int quantidadeEstoque) {
-		if (quantidadeEstoque >= 0)
+		if (quantidadeEstoque >= 0) {
 			this.quantidadeEstoque = quantidadeEstoque;
-		else 
+			setSituacao();
+		} else 
 			System.out.println("Quantidade inválida");
 	}
 	

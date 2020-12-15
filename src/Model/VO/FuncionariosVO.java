@@ -14,8 +14,17 @@ public class FuncionariosVO {
      private double salario;
      private String login;
      private String senha;
+     private String dataDemissao;
      
-     // getters e setters
+     public String getDataDemissao() {
+		return dataDemissao;
+	}
+
+	public void setDataDemissao(String dataDemissao) {
+		this.dataDemissao = dataDemissao;
+	}
+
+	// getters e setters
     public int getCodigo() {
 		return codigo;
 	}

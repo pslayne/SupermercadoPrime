@@ -10,8 +10,8 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import Model.BO.FuncionariosBO;
-import Model.BO.VendasBO;
+import Model.BO.*;
+import Model.VO.ProdutosVO;
 import View.Telas;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -46,19 +46,19 @@ public class ControllerPopupConfirmar implements Initializable{
 		
 		if (control == 0)
 			msg.setText("Confirmar venda?");
-		if (control == 1) {
+		else if (control == 1)
     		msg.setText("excluir este funcionário?");
-		}
+		else if(control == 2)
+			msg.setText("excluir este produto?");
 	}
 	
-	public void gerarPdf(){
-		Document doc = new Document();
-		FileChooser f = new FileChooser();
-		f.getExtensionFilters().add(new ExtensionFilter("PDF","*.pdf"));
-		java.io.File file = f.showSaveDialog(new Stage());
+    public void gerarPdf(){
+	Document doc = new Document();
+	FileChooser f = new FileChooser();
+	f.getExtensionFilters().add(new ExtensionFilter("PDF","*.pdf"));
+	java.io.File file = f.showSaveDialog(new Stage());
 		
-		 if (file != null) {
-			
+	if (file != null) {	
 		try {
 			PdfWriter.getInstance(doc, new FileOutputStream(file.getAbsolutePath()));
 			doc.open();
@@ -66,8 +66,17 @@ public class ControllerPopupConfirmar implements Initializable{
 			Paragraph par = new Paragraph("--- Nota Fiscal ---");
 			par.setAlignment(1);
 			doc.add(par);
-			Paragraph tex = new Paragraph("Venda: " + Telas.getVenda());
+			Paragraph tex = new Paragraph("Venda: " + Telas.getVenda().getCodigo());
 			doc.add(tex);
+
+			for(ProdutosVO produto : Telas.getVenda().getProdutos()){
+				Paragraph prod = new Paragraph("Item: " + produto.getNome() 
+							+ "\nQuantidade: " + produto.getQuantidadePedido()
+							+ "\nValor: " + produto.getPreco() + "\n\n");
+				doc.add(prod);
+			}
+			Paragraph valFim = new Paragraph("Valor total da compra: " + Telas.getVenda().getValor());
+			doc.add(valFim);
 						
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -75,9 +84,8 @@ public class ControllerPopupConfirmar implements Initializable{
 			e.printStackTrace();
 		} finally {
 			doc.close();
-	
-	}
-		 }
+		}
+	    }
 	}
     
     @FXML
@@ -94,6 +102,11 @@ public class ControllerPopupConfirmar implements Initializable{
     		fbo.remover(Telas.getFsel());
     		Telas.getPopup().close();
     		Telas.telaFuncionarios();
+    	} else if(control == 2) {
+    		ProdutosBO pbo = new ProdutosBO();
+    		pbo.remover(Telas.getPsel());
+    		Telas.getPopup().close();
+    		Telas.telaEstoque();
     	}
     }
 

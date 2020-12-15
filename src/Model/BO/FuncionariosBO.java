@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
 import Model.DAO.FuncionariosDAO;
+import Model.VO.Atualizacao;
 import Model.VO.CargoVO;
 import Model.VO.FuncionariosVO;
 
@@ -273,9 +274,85 @@ public class FuncionariosBO implements InterFuncionariosBO{
 		return r;
 	}
 	
+	public List<FuncionariosVO> listarEx() {
+		ResultSet rs = dao.listarEx();
+		List<FuncionariosVO> funcionarios = new ArrayList<FuncionariosVO>();
+		
+		try {
+			while(rs.next()) {
+				FuncionariosVO f = new FuncionariosVO();
+				f.setCodigo(rs.getInt("id_func"));
+				f.setNome(rs.getString("nome"));
+				String d = rs.getString("data_demissao");
+				
+				int ano = Integer.parseInt(d.substring(0, 4));
+				int mes = Integer.parseInt(d.substring(5, 7));
+				int dia = Integer.parseInt(d.substring(8, 10));
+				
+				if (dia < 10 && mes < 10)
+					d = 0 + "" + dia + "/" + 0 + "" + mes + "/" + ano;
+				else if (dia < 10)
+					d = 0 + "" + dia + "/" + mes + "/" + ano;
+				else if (mes < 10)
+					d = dia + "/" + 0 + "" + mes + "/" + ano;
+				else 
+					d = dia + "/" + mes + "/" + ano;
+				
+				f.setDataDemissao(d);
+				funcionarios.add(f);
+			}
+			return funcionarios;
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+			return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	
+	public List<Atualizacao> listarAt() {
+		ResultSet rs = dao.listarAt();
+		List<Atualizacao> at = new ArrayList<Atualizacao>();
+		
+		try {
+			while(rs.next()) {
+				Atualizacao a = new Atualizacao();
+				a.setOperacao(rs.getString("modificacao"));
+				
+				String d = rs.getString("data");
+				
+				int ano = Integer.parseInt(d.substring(0, 4));
+				int mes = Integer.parseInt(d.substring(5, 7));
+				int dia = Integer.parseInt(d.substring(8, 10));
+				
+				if (dia < 10 && mes < 10)
+					d = 0 + "" + dia + "/" + 0 + "" + mes + "/" + ano;
+				else if (dia < 10)
+					d = 0 + "" + dia + "/" + mes + "/" + ano;
+				else if (mes < 10)
+					d = dia + "/" + 0 + "" + mes + "/" + ano;
+				else 
+					d = dia + "/" + mes + "/" + ano;
+				
+				a.setData(d);
+				at.add(a);
+			}
+			return at;
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+			return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	
 	public List<FuncionariosVO> listar() {
 		ResultSet rs = dao.listar();
-		ArrayList<FuncionariosVO> funcionarios = new ArrayList<FuncionariosVO>();
+		List<FuncionariosVO> funcionarios = new ArrayList<FuncionariosVO>();
 		CargoBO cbo = new CargoBO();
 		
 		try {

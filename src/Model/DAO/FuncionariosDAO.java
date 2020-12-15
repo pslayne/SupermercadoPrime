@@ -150,4 +150,38 @@ public class FuncionariosDAO extends BaseDAO{
 		}
 
 	}
+	
+	public ResultSet listarEx(){
+		conn = getConnection();
+		String sql = "select * from ex_funcionarios";
+		Statement st;
+		ResultSet rs;
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			conn.close();
+			return rs;
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+	
+	public ResultSet listarAt(){
+		conn = getConnection();
+		String sql = "select * from atualizacoes";
+		Statement st;
+		ResultSet rs;
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			conn.close();
+			return rs;
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 }

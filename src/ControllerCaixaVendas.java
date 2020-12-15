@@ -1,5 +1,7 @@
-package Controller;
+//package Controller;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -7,7 +9,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import Model.BO.VendasBO;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import Controller.ControllerCaixaProduto;
 import Model.VO.ProdutosVO;
 import Model.VO.Util;
 import View.Telas;
@@ -22,6 +29,9 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 
 public class ControllerCaixaVendas implements Initializable{
 
@@ -71,23 +81,14 @@ public class ControllerCaixaVendas implements Initializable{
 		Iterator<ProdutosVO> i = p.iterator();
 		List<ProdutosVO> r = new ArrayList<ProdutosVO>();
 		double t = 0.0;
-		int q = 0;
 		
 		while(i.hasNext()) {
 			ProdutosVO vo = i.next();
 			double precoTotal = vo.getQuantidadePedido() * vo.getPreco();
-			q += vo.getQuantidadePedido();
 			t += precoTotal;
 			vo.setPrecoTotal(precoTotal);
 			r.add(vo);
 		}
-		
-		if(q >= 100) {
-			VendasBO bo = new VendasBO();
-			t = bo.desconto((float)t, (float)t);
-		}
-		
-		Telas.getVenda().setValor(t);
 		total.setText("R$" + t);
 	    return FXCollections.observableList(r);
 	}
@@ -115,10 +116,8 @@ public class ControllerCaixaVendas implements Initializable{
     @FXML
     void deletar(MouseEvent event) {
     	ProdutosVO p = produtos.getSelectionModel().getSelectedItem();
-    	if(p != null) {
-	    	Telas.getVenda().getProdutos().remove(p);
-	    	Telas.telaCaixaVendas();
-    	} else erroSelec.setVisible(true);
+    	Telas.getVenda().getProdutos().remove(p);
+    	Telas.telaCaixaVendas();
     }
 
     @FXML
@@ -126,6 +125,39 @@ public class ControllerCaixaVendas implements Initializable{
     	Telas.popupCancelar();
     }
 
+    public void gerarPdf(){
+	Document doc = new Document();
+	FileChooser f = new FileChooser();
+	f.getExtensionFilters().add(new ExtensionFilter("PDF","*.pdf"));
+	java.io.File file = f.showSaveDialog(new Stage());
+		
+	if (file != null) {	
+		try {
+			PdfWriter.getInstance(doc, new FileOutputStream(file.getAbsolutePath()));
+			doc.open();
+			
+			Paragraph par = new Paragraph("--- Nota Fiscal ---");
+			par.setAlignment(1);
+			doc.add(par);
+			Paragraph tex = new Paragraph("Venda: " + Telas.getVenda().getCodigo());
+			doc.add(tex);
 
-
+			for(ProdutosVO produto : Telas.getVenda().getProdutos()){
+				Paragraph prod = new Paragraph("Item: " + produto.getNome() 
+							+ "\nQuantidade: " + produto.getQuantidadePedido()
+							+ "\nValor: " + produto.getPreco() + "\n\n");
+				doc.add(prod);
+			}
+			Paragraph valFim = new Paragraph("Valor total da compra: " + Telas.getVenda().getValor());
+			doc.add(valFim);
+						
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		} finally {
+			doc.close();
+		}
+	    }
+	}
 }

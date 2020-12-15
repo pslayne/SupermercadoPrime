@@ -19,7 +19,7 @@ public class ProdutosDAO extends BaseDAO {
 			ptst.setDouble(5, produto.getPreco());
 			
 			ptst.execute();
-			conn.close();
+			//conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -32,7 +32,7 @@ public class ProdutosDAO extends BaseDAO {
 			PreparedStatement ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, produto.getCodigo());
 			ptst.execute();
-			conn.close();
+			//conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -50,7 +50,7 @@ public class ProdutosDAO extends BaseDAO {
 			ptst.setDouble(5, novoProduto.getPreco());
 			ptst.setInt(6, produto.getCodigo());
 			ptst.execute();
-			conn.close();
+			//conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -65,7 +65,7 @@ public class ProdutosDAO extends BaseDAO {
 			ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, produto.getCodigo());
 			rs = ptst.executeQuery();
-			conn.close();
+			//conn.close();
 			return rs;
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -75,14 +75,14 @@ public class ProdutosDAO extends BaseDAO {
 	
 	public ResultSet buscarNome(ProdutosVO produto) {
 		conn = getConnection();
-		String sql = "select * from produtos where nome = ?";
+		String sql = "select * from produtos where nome ilike ?";
 		PreparedStatement ptst;
 		ResultSet rs;
 		try {
 			ptst = conn.prepareStatement(sql);
-			ptst.setString(1, produto.getNome());
+			ptst.setString(1, "%" + produto.getNome() + "%");
 			rs = ptst.executeQuery();
-			conn.close();
+			//conn.close();
 			return rs;
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -99,7 +99,7 @@ public class ProdutosDAO extends BaseDAO {
 			ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, produto.getTipo().getCodigo());
 			rs = ptst.executeQuery();
-			conn.close();
+			//conn.close();
 			return rs;
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -109,14 +109,14 @@ public class ProdutosDAO extends BaseDAO {
 	
 	public ResultSet buscarMarca(ProdutosVO produto) {
 		conn = getConnection();
-		String sql = "select * from produtos where marca = ?";
+		String sql = "select * from produtos where marca ilike ?";
 		PreparedStatement ptst;
 		ResultSet rs;
 		try {
 			ptst = conn.prepareStatement(sql);
-			ptst.setString(1, produto.getMarca());
+			ptst.setString(1, "%" + produto.getMarca() + "%");
 			rs = ptst.executeQuery();
-			conn.close();
+			//conn.close();
 			return rs;
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -133,7 +133,7 @@ public class ProdutosDAO extends BaseDAO {
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
-			conn.close();
+			//conn.close();
 			return rs;
 		} catch(SQLException e) {
 			e.printStackTrace();

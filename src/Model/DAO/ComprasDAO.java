@@ -1,8 +1,9 @@
 package Model.DAO;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+
 import Model.VO.ComprasVO;
 import Model.VO.ProdutosVO;
 
@@ -11,7 +12,7 @@ public class ComprasDAO extends BaseDAO {
 		conn = getConnection();
 		String sql = "insert into compras(id_compra, cod_produto, quant_produtos, valor, datacompra, hora, id_func) values(?, ?, ?, ?, ?, ?, ?);";
 		try {
-			ArrayList<ProdutosVO> produtos = compra.getProdutos();
+			List<ProdutosVO> produtos = compra.getProdutos();
 			Iterator<ProdutosVO> iterator = produtos.iterator();
 			while(iterator.hasNext()) {
 				ProdutosVO p = iterator.next();

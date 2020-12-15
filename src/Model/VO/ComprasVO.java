@@ -1,8 +1,8 @@
 package Model.VO;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.List;
 
 public class ComprasVO {
 	private int codigo;
@@ -11,8 +11,9 @@ public class ComprasVO {
 	private Calendar hora;
 	private String horaS;
 	private double valor;
-	private ArrayList<ProdutosVO> produtos;
+	private List<ProdutosVO> produtos;
 	private FuncionariosVO gerente;
+	private String gerenteS;
 	private int quantidadeProdutos;
 	
 	public int getCodigo(){
@@ -33,13 +34,13 @@ public class ComprasVO {
 	
 	public void setData() {
 		data = Calendar.getInstance();
-		setDataS(data);
+		setDataS();
 	}
 	
 	public void setData(Calendar data) {
 		if(data != null) {
 			this.data = data;
-			setDataS(data);
+			setDataS();
 		} else
 			System.out.println("Data Inválida!");
 	}
@@ -48,16 +49,17 @@ public class ComprasVO {
 		return dataS;
 	}
 	
-	public void setDataS(Calendar data) {
-		dataS = Util.formataHora(data);
+	public void setDataS() {
+		dataS = getData(getData());
 	}
 	
 	public void setData(String d) {
 		if (d != null && !d.isEmpty()) {
 			Calendar data = Util.formataData(d);
-			if(data != null)		
+			if(data != null) {		
 				this.data = data;
-			else System.out.println("Data inválida!");
+				setDataS();
+			} else System.out.println("Data inválida!");
 		} else System.out.println("Data inválida!");
 	}
 	
@@ -71,13 +73,13 @@ public class ComprasVO {
 	
 	public void setHora() {
 		hora = Calendar.getInstance();
-		setHoraS(hora);
+		setHoraS();
 	}
 	
 	public void setHora(Calendar hora) {
 		if(hora != null) {
 			this.hora = hora;
-			setHoraS(hora);
+			setHoraS();
 		} else
 			System.out.println("Hora Inválida!");
 	}
@@ -85,9 +87,10 @@ public class ComprasVO {
 	public void setHora(String h) {
 		if (h!= null && !h.isEmpty()) {
 			Calendar hora = Util.formataHora(h);
-			if(hora != null)		
+			if(hora != null) {		
 				this.hora = hora;
-			else System.out.println("Hora inválida!");
+				setHoraS();
+			} else System.out.println("Hora inválida!");
 		} else System.out.println("Hora inválida!");
 	}
 	
@@ -95,8 +98,8 @@ public class ComprasVO {
 		return horaS;
 	}
 	
-	public void setHoraS(Calendar hora) {
-		horaS = Util.formataHora(hora);
+	public void setHoraS() {
+		horaS = getHora(getHora());
 	}
 	
 	public double getValor() {
@@ -115,21 +118,27 @@ public class ComprasVO {
 	}
 	
 	public void setGerente(FuncionariosVO gerente) {
-		if (gerente != null) 
+		if (gerente != null) {
 			this.gerente = gerente;
-		else
+			setGerenteS(gerente.getNome());
+		} else
 			System.out.println("Gerente inválido!");
 	}
 	
-	public ArrayList <ProdutosVO> getProdutos() {
+	public List <ProdutosVO> getProdutos() {
 		return produtos;
 	}
 	
-	public void setProdutos(ArrayList <ProdutosVO> produtos) {
-		if (!produtos.isEmpty())
-			this.produtos = produtos;
-		else
-			System.out.println("Produtos inválidos!");
+	public void setProdutos(List <ProdutosVO> produtos) {
+		this.produtos = produtos;
+	}
+	
+	public String getGerenteS() {
+		return gerenteS;
+	}
+	
+	public void setGerenteS(String gerenteS) {
+		this.gerenteS = gerenteS;
 	}
 	
 	public int getQuantidadeProdutos(){
@@ -142,7 +151,7 @@ public class ComprasVO {
 	
 	public String toString(){
 		String s = "ID: " + getCodigo() + " Valor: " + getValor() + " Funcionario: " + getGerente().getCodigo() + "\t" + getData(data) + " " + getHora(hora);
-		ArrayList <ProdutosVO> produtos = getProdutos();
+		List <ProdutosVO> produtos = getProdutos();
 		Iterator<ProdutosVO> iterator = produtos.iterator();
 		while (iterator.hasNext()) 
 			s += "\n" + iterator.next();

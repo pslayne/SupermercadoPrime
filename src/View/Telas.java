@@ -16,6 +16,24 @@ public class Telas extends Application{
 	private static FuncionariosVO user;
 	private static FuncionariosVO fsel;
 	private static VendasVO venda;
+	private static ComprasVO compra;
+	private static ProdutosVO psel;
+	
+	public static ComprasVO getCompra() {
+		return compra;
+	}
+
+	public static void setCompra(ComprasVO compra) {
+		Telas.compra = compra;
+	}
+
+	public static ProdutosVO getPsel() {
+		return psel;
+	}
+
+	public static void setPsel(ProdutosVO psel) {
+		Telas.psel = psel;
+	}
 
 	public static FuncionariosVO getUser() {
 		return user;
@@ -187,6 +205,18 @@ public class Telas extends Application{
 		}  
 	}
 	
+	public static void telaComprasItens() {
+		Parent root;
+		try {
+			root = FXMLLoader.load(Telas.class.getResource("TelaComprasItens.fxml"));
+			Scene cena = new Scene(root);
+			primaryStage.setScene(cena);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+	}
+	
 	public static void telaVendas() {
 		Parent root;
 		try {
@@ -215,6 +245,18 @@ public class Telas extends Application{
 		Parent root;
 		try {
 			root = FXMLLoader.load(Telas.class.getResource("TelaEstoque.fxml"));
+			Scene cena = new Scene(root);
+			primaryStage.setScene(cena);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+	}
+	
+	public static void telaEstoqueEdit() {
+		Parent root;
+		try {
+			root = FXMLLoader.load(Telas.class.getResource("TelaEstoqueEdit.fxml"));
 			Scene cena = new Scene(root);
 			primaryStage.setScene(cena);
 		} catch (IOException e) {

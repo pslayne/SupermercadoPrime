@@ -19,7 +19,7 @@ public abstract class BaseDAO {
 				e.printStackTrace();
 				return null;
 			}
-		} else
+		} else 
 			try {
 				if(conn.isClosed()) {
 					conn = DriverManager.getConnection(url, user, senha);

@@ -3,6 +3,7 @@ package Model.BO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Iterator;
 import Model.DAO.ComprasDAO;
@@ -29,27 +30,27 @@ public class ComprasBO implements InterComprasBO{
 	
 	public void remover(ComprasVO compra) {
 		if(compra != null) {
-			List<ComprasVO> resultado = buscarID(compra);
-			if(!resultado.isEmpty()) 
+			ComprasVO resultado = buscarID(compra);
+			if(resultado != null) 
 				dao.remover(compra);
 			else System.out.println("Esta compra não existe");
 		} else System.out.println("Compra inválida");
 	}
 	
-	public List<ComprasVO> buscarID(ComprasVO compra) {
+	public ComprasVO buscarID(ComprasVO compra) {
 		List<ComprasVO> lista = listar();
-		ArrayList<ComprasVO> busca = new ArrayList<ComprasVO>();
 		
 		Iterator<ComprasVO> iterator = lista.iterator();
+		ComprasVO r = new ComprasVO();
 		
 		while(iterator.hasNext()) {
 			ComprasVO c = iterator.next();
 			
 			if(c.getCodigo() == compra.getCodigo())
-				busca.add(c);
+				r = c;
+			else continue;
 		}
-		
-		return busca;
+		return r;
 	}
 	
 	public List<ComprasVO> buscarGerenteNome(ComprasVO compra){
@@ -155,17 +156,58 @@ public class ComprasBO implements InterComprasBO{
 			ComprasVO c = iterator.next();
 			Iterator<ProdutosVO> iteratorp = c.getProdutos().iterator();
 			double valor = 0.0;
+			int quant = 0, con = 0;
 			
 			while(iteratorp.hasNext()) {
 				ProdutosVO produto = iteratorp.next();
 				valor += produto.getPreco() * produto.getQuantidadePedido();
+				quant += produto.getQuantidadePedido();
+				c.getProdutos().get(con).setPrecoTotal(produto.getPreco() * produto.getQuantidadePedido());
+				con++;
 			}
 			
+			c.setQuantidadeProdutos(quant);
 			c.setValor(valor);
 			comprasR.add(c);
 		}
 			
 		return comprasR;
+	}
+	
+	public List<ComprasVO> buscarData(ComprasVO venda, String tipo) {
+		List<ComprasVO> vendas = listar();
+		List<ComprasVO> r = new ArrayList<ComprasVO>();
+		
+		int year = venda.getData().get(Calendar.YEAR);
+		int week = venda.getData().get(Calendar.WEEK_OF_YEAR);
+		int month = venda.getData().get(Calendar.MONTH);
+		
+		if(tipo.equalsIgnoreCase("semana")) {
+			for(int i = 0; i < vendas.size(); i++) {
+				int ano = vendas.get(i).getData().get(Calendar.YEAR);
+				int semana = vendas.get(i).getData().get(Calendar.WEEK_OF_YEAR);
+				
+				if(ano == year && semana == week)
+					r.add(vendas.get(i));
+			}
+		} else if (tipo.equalsIgnoreCase("mês")) {
+			for(int i = 0; i < vendas.size(); i++) {
+				int ano = vendas.get(i).getData().get(Calendar.YEAR);
+				int mes = vendas.get(i).getData().get(Calendar.MONTH);
+				
+				if(ano == year && mes == month)
+					r.add(vendas.get(i));
+			}
+		} else if(tipo.equalsIgnoreCase("ano")) {
+			for(int i = 0; i < vendas.size(); i++) {
+				int ano = vendas.get(i).getData().get(Calendar.YEAR);
+				
+				if(ano == year)
+					r.add(vendas.get(i));
+			}
+		}
+		
+		return r;
 	}
 	
 	public List<ComprasVO> listar(){
@@ -237,12 +279,17 @@ public class ComprasBO implements InterComprasBO{
 			ComprasVO compra = iterator.next();
 			Iterator<ProdutosVO> iteratorp = compra.getProdutos().iterator();
 			double valor = 0.0;
+			int quant = 0, con = 0;
 			
 			while(iteratorp.hasNext()) {
 				ProdutosVO produto = iteratorp.next();
 				valor += produto.getPreco() * produto.getQuantidadePedido();
+				quant += produto.getQuantidadePedido();
+				compra.getProdutos().get(con).setPrecoTotal(produto.getPreco() * produto.getQuantidadePedido());
+				con++;
 			}
 			
+			compra.setQuantidadeProdutos(quant);
 			compra.setValor(valor);
 			comprasR.add(compra);
 		}

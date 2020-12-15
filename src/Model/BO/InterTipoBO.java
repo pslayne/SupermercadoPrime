@@ -13,7 +13,7 @@ public interface InterTipoBO {
 	
 	public TipoVO buscarID(TipoVO tipo);
 	
-	public List<TipoVO> buscarNome(TipoVO tipo);
+	public TipoVO buscarNome(TipoVO tipo);
 	 
 	public List<TipoVO> listar();
 	

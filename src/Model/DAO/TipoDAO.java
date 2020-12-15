@@ -15,7 +15,7 @@ public class TipoDAO extends BaseDAO {
 			PreparedStatement ptst = conn.prepareStatement(sql);
 			ptst.setString(1, tipo.getNome());
 			ptst.execute();
-			conn.close();
+			//conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -28,13 +28,14 @@ public class TipoDAO extends BaseDAO {
 			PreparedStatement ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, tipo.getCodigo());
 			ptst.execute();
-			conn.close();
+			//conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void atualizar(TipoVO tipo, TipoVO novoTipo) {
+		conn = getConnection();
 		TipoBO bo = new TipoBO();
 		TipoVO t = bo.buscarID(tipo);
 		PreparedStatement ptst;
@@ -47,7 +48,7 @@ public class TipoDAO extends BaseDAO {
 				ptst.setString(1, novoTipo.getFormaDeVenda());
 				ptst.setInt(2, tipo.getCodigo());
 				ptst.execute();
-				conn.close();
+				//conn.close();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -63,7 +64,7 @@ public class TipoDAO extends BaseDAO {
 			ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, tipo.getCodigo());
 			rs = ptst.executeQuery();
-			conn.close();
+			//conn.close();
 			return rs;
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -82,7 +83,7 @@ public class TipoDAO extends BaseDAO {
 			ptst = conn.prepareStatement(sql);
 			ptst.setString(1, tipo.getNome());
 			rs = ptst.executeQuery();
-			conn.close();
+			//conn.close();
 			return rs;
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -99,7 +100,7 @@ public class TipoDAO extends BaseDAO {
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
-			conn.close();
+			//conn.close();
 			return rs;
 		} catch(SQLException e) {
 			e.printStackTrace();

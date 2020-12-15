@@ -31,6 +31,7 @@ public class CargoDAO extends BaseDAO{
 	}
 	
 	public void atualizar(CargoVO cargo, CargoVO novoCargo) {
+		conn = getConnection();
 		CargoBO bo = new CargoBO();
 		CargoVO c = bo.buscarID(cargo);
 		PreparedStatement ptst;
@@ -68,7 +69,7 @@ public class CargoDAO extends BaseDAO{
 	
 	public ResultSet buscarNome(CargoVO cargo) {
 		conn = getConnection();
-		String sql = "select * from cargo where nome_cargo = ?;";
+		String sql = "select * from cargo where nome_cargo ilike ?;";
 		PreparedStatement ptst;
 		ResultSet rs;
 		try {

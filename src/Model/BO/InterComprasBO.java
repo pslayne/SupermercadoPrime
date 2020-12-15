@@ -9,7 +9,7 @@ public interface InterComprasBO {
 	
 	public void remover(ComprasVO compra);
 	
-	public List<ComprasVO> buscarID(ComprasVO compra);
+	public ComprasVO buscarID(ComprasVO compra);
 	
 	public List<ComprasVO> buscarGerenteNome(ComprasVO compra);
 	

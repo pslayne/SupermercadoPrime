@@ -13,8 +13,8 @@ public class TipoBO implements InterTipoBO{
 
 	public void adicionar(TipoVO tipo) {
 		if(tipo != null) {
-			List<TipoVO> resultado = buscarNome(tipo);
-			if(resultado.isEmpty()) 
+			TipoVO resultado = buscarNome(tipo);
+			if(resultado == null) 
 				dao.inserir(tipo);
 			else System.out.println("Este tipo já existe");
 		} else System.out.println("Tipo inválido");
@@ -23,8 +23,8 @@ public class TipoBO implements InterTipoBO{
 	public void remover(TipoVO tipo) {
 		if(tipo != null) {
 			TipoDAO dao = new TipoDAO();
-			List<TipoVO> resultado = buscarNome(tipo);
-			if(!resultado.isEmpty()) 
+			TipoVO resultado = buscarNome(tipo);
+			if(resultado != null) 
 				dao.remover(tipo);
 			else System.out.println("Este tipo não existe");
 		} else System.out.println("Tipo inválido");
@@ -32,8 +32,8 @@ public class TipoBO implements InterTipoBO{
 	
 	public void editar(TipoVO tipo, TipoVO novoTipo) {
 		if(tipo != null && novoTipo != null) {
-			List<TipoVO> resultado = buscarNome(tipo);
-			if(!resultado.isEmpty()) 
+			TipoVO resultado = buscarNome(tipo);
+			if(resultado != null) 
 				dao.atualizar(tipo, novoTipo);
 			else System.out.println("Este cargo não existe");
 		} else System.out.println("Cargo inválido");
@@ -58,19 +58,17 @@ public class TipoBO implements InterTipoBO{
 	
 	}
 
-	public List<TipoVO> buscarNome(TipoVO tipo) {
+	public TipoVO buscarNome(TipoVO tipo) {
 		ResultSet rs = dao.buscarNome(tipo);
-		ArrayList<TipoVO> tipos = new ArrayList<TipoVO>();
 		
 		try {
-			while(rs.next()) {
+			if(rs.next()) {
 				TipoVO t = new TipoVO();
 				t.setCodigo((rs.getInt("id_tipo")));
 				t.setNome(rs.getString("nome_tipo"));
 				t.setFormaDeVenda(rs.getString("forma_venda"));
-				tipos.add(t);
-			}
-			return tipos;
+				return t;
+			} else return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;

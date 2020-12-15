@@ -1,4 +1,4 @@
-package Controller;
+//package Controller;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -70,6 +70,7 @@ public class ControllerVendas implements Initializable{
 	}
 	
 	public void initTabela() {
+		
 		quantidade.setCellValueFactory(new PropertyValueFactory<VendasVO, Integer>("quantidade"));
     	hora.setCellValueFactory(new PropertyValueFactory<VendasVO, String>("horaS"));
     	data.setCellValueFactory(new PropertyValueFactory<VendasVO, String>("dataS"));

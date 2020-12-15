@@ -111,11 +111,36 @@
          </image>
       </ImageView>
       <Label fx:id="gerente" alignment="CENTER" layoutX="10.0" layoutY="44.0" prefHeight="17.0" prefWidth="117.0" />
-      <ComboBox fx:id="pesquisac" layoutX="538.0" layoutY="17.0" prefHeight="25.0" prefWidth="88.0" />
+      <ComboBox fx:id="pesquisac" layoutX="538.0" layoutY="17.0" prefHeight="25.0" prefWidth="88.0" style="-fx-background-radius: 15px;" />
       <ImageView fx:id="add" fitHeight="28.0" fitWidth="34.0" layoutX="796.0" layoutY="370.0" onMouseClicked="#adicionar" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@VE/Adicionar.png" />
          </image>
       </ImageView>
+      <TableView fx:id="tbEx" layoutX="182.0" layoutY="71.0" prefHeight="294.0" prefWidth="620.0" visible="false">
+        <columns>
+          <TableColumn fx:id="idEx" prefWidth="107.0" text="ID" />
+          <TableColumn fx:id="nomeEx" prefWidth="333.0" text="Nome" />
+            <TableColumn fx:id="dataDemissao" prefWidth="179.0" text="Data de Demissão" />
+        </columns>
+      </TableView>
+      <ImageView fx:id="out" fitHeight="28.0" fitWidth="34.0" layoutX="796.0" layoutY="15.0" onMouseClicked="#voltar" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@VE/Sair.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="exfunc" layoutX="333.0" layoutY="17.0" mnemonicParsing="false" onAction="#showExfunc" style="-fx-background-radius: 15px;" text="Ver Ex-Funcionários" />
+      <ImageView fx:id="print" fitHeight="28.0" fitWidth="34.0" layoutX="755.0" layoutY="370.0" onMouseClicked="#relatCargos" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@VE/print.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="atual" layoutX="594.0" layoutY="371.0" mnemonicParsing="false" onAction="#showAtual" style="-fx-background-radius: 15px;" text="Ver Atualizações" />
+      <TableView fx:id="atualizacoes" layoutX="174.0" layoutY="66.0" prefHeight="294.0" prefWidth="634.0" visible="false">
+        <columns>
+          <TableColumn fx:id="dataAt" prefWidth="206.0" text="Data" />
+          <TableColumn fx:id="modificacao" prefWidth="427.0" text="Modificação" />
+        </columns>
+      </TableView>
    </children>
 </Pane>

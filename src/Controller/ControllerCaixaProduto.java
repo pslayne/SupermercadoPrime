@@ -42,6 +42,16 @@ public class ControllerCaixaProduto implements Initializable{
 		ControllerCaixaProduto.prod = prod;
 	}
 	
+	private static boolean com = false;
+	
+	public static boolean isCom() {
+		return com;
+	}
+
+	public static void setCom(boolean com) {
+		ControllerCaixaProduto.com = com;
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		Tooltip.install(cancelar, new Tooltip("cancelar"));
@@ -49,11 +59,16 @@ public class ControllerCaixaProduto implements Initializable{
 	}
 	
 	public void ok(){
-		if (control == 0) {
+		if (control == 0) { //adicionar
 			qntd.setVisible(false);
 			codigo.setVisible(false);
+			List<ProdutosVO> produtos;
 			
-			List<ProdutosVO> produtos = Telas.getVenda().getProdutos();
+			if(!com)
+				produtos = Telas.getVenda().getProdutos();
+			else
+				produtos = Telas.getCompra().getProdutos();
+			
 			ProdutosVO produto = new ProdutosVO();
 			
 			int cod = Integer.parseInt(codigoProduto.getText());
@@ -69,21 +84,34 @@ public class ControllerCaixaProduto implements Initializable{
 				else {
 					produto.setQuantidadePedido(quant);
 					produtos.add(produto);
-					Telas.getVenda().setProdutos(produtos);
-					Telas.telaCaixaVendas();
-					Telas.getPopup().close();
+					
+					if(!com) {
+						Telas.getVenda().setProdutos(produtos);
+						Telas.telaCaixaVendas();
+						Telas.getPopup().close();
+					} else {
+						Telas.getCompra().setProdutos(produtos);
+						Telas.telaComprasItens();
+						Telas.getPopup().close();
+						com = false;
+					}
 				}
 			
 			} else codigo.setVisible(true);
 		
-		} else if (control == 1) {
+		} else if (control == 1) { //editar
 			qntd.setVisible(false);
 			codigo.setVisible(false);
 			
-			codigoProduto.setPromptText(prod.getCodigo() + "");
-			quantidade.setPromptText(prod.getQuantidadePedido() + "");
+			codigoProduto.setText(prod.getCodigo() + "");
+			quantidade.setText(prod.getQuantidadePedido() + "");
 			
-			List<ProdutosVO> produtos = Telas.getVenda().getProdutos();
+			List<ProdutosVO> produtos;
+			if(!com)
+				produtos = Telas.getVenda().getProdutos();
+			else
+				produtos = Telas.getCompra().getProdutos();
+			
 			ProdutosVO produto = new ProdutosVO();
 			
 			int cod = Integer.parseInt(codigoProduto.getText());
@@ -101,9 +129,16 @@ public class ControllerCaixaProduto implements Initializable{
 					produtos.remove(produtos.indexOf(prod));
 					produtos.add(produto);
 						
-					Telas.getVenda().setProdutos(produtos);
-					Telas.telaCaixaVendas();
-					Telas.getPopup().close();
+					if(!com) {
+						Telas.getVenda().setProdutos(produtos);
+						Telas.telaCaixaVendas();
+						Telas.getPopup().close();
+					} else {
+						Telas.getCompra().setProdutos(produtos);
+						Telas.telaComprasItens();
+						Telas.getPopup().close();
+						com = false;
+					}
 				}
 			
 			} else codigo.setVisible(true);

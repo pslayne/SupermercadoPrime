@@ -28,7 +28,7 @@ public class VendasDAO extends BaseDAO {
 				ptst.setInt(7, venda.getCaixa().getCodigo());
 				
 				ptst.execute();
-				conn.close();
+				//conn.close();
 			}
 			
 		} catch (SQLException e) {
@@ -43,7 +43,7 @@ public class VendasDAO extends BaseDAO {
 			PreparedStatement ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, venda.getCodigo());
 			ptst.execute();
-			conn.close();
+			//conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -58,7 +58,7 @@ public class VendasDAO extends BaseDAO {
 			ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, venda.getCodigo());
 			rs = ptst.executeQuery();
-			conn.close();
+			//conn.close();
 			return rs;
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -75,7 +75,7 @@ public class VendasDAO extends BaseDAO {
 			ptst = conn.prepareStatement(sql);
 			ptst.setDate(1, new Date(venda.getData().getTimeInMillis()));
 			rs = ptst.executeQuery();
-			conn.close();
+			//conn.close();
 			return rs;
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -91,11 +91,36 @@ public class VendasDAO extends BaseDAO {
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
-			conn.close();
+			//conn.close();
 			return rs;
 		} catch(SQLException e) {
 			e.printStackTrace();
 			return null;
 	}
+	}
+	
+	public double desconto(float v1, float v2) {
+		String sql = "select desconto(?,?,?);";
+		conn = getConnection();
+		PreparedStatement ptst;
+		ResultSet rs;
+		double des;
+		float d = (float) 0.1;
+		try {
+			ptst = conn.prepareStatement(sql);
+			ptst.setFloat(1, v1);
+			ptst.setFloat(2, v2);
+			ptst.setFloat(3, d);
+			
+			rs = ptst.executeQuery();
+			
+			if(rs.next()) {
+				des = rs.getDouble("desconto");
+				return des;
+			} else return 0.0;
+		} catch(SQLException e) {
+			e.printStackTrace();
+			return 0.0;
+		}
 	}
 }

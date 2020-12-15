@@ -71,7 +71,6 @@ public class ControllerFuncionariosEdit implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		erro.setVisible(false);
 		
-		
 		Tooltip.install(edit, new Tooltip("editar"));
 		Tooltip.install(save, new Tooltip("salvar"));
 		Tooltip.install(volta, new Tooltip("voltar"));
@@ -194,19 +193,19 @@ public class ControllerFuncionariosEdit implements Initializable {
 
     @FXML
     void salvar() {
-    	FuncionariosVO f = new FuncionariosVO();
-    	FuncionariosBO fbo = new FuncionariosBO();
-    	
-    	CargoVO c = new CargoVO();
-    	c.setNome(cargoEdit.getText());
-    	
-    	CargoBO cb = new CargoBO();
-    	f.setCargo(cb.buscarNome(c));
-    	
     	if(emailEdit.getText() == null || cpfEdit.getText() == null || nomeEdit.getText() == null || enderecoEdit.getText() == null || loginEdit.getText() == null || senhaEdit.getText() == null || datanascimentoEdit.getText() == null || salarioEdit.getText() == null) {
     		erro.setText("preencha todos os campos");
     		erro.setVisible(true);
     	} else {
+    		FuncionariosVO f = new FuncionariosVO();
+	    	FuncionariosBO fbo = new FuncionariosBO();
+	    	
+	    	CargoVO c = new CargoVO();
+	    	c.setNome(cargoEdit.getText());
+	    	
+	    	CargoBO cb = new CargoBO();
+	    	f.setCargo(cb.buscarNome(c));
+	    	
 		    if(!adicionar) {	
     			f.setEmail(emailEdit.getText());
 		    	f.setCpf(cpfEdit.getText());

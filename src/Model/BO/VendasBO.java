@@ -13,6 +13,10 @@ import Model.VO.VendasVO;
 public class VendasBO implements InterVendasBO{
 	VendasDAO dao = new VendasDAO();
 	
+	public double desconto(float v1, float v2) {
+		return dao.desconto(v1, v2);
+	}
+	
 	public void adicionar(VendasVO venda) {
 		if(venda != null) {
 			List<VendasVO> lista = listar();
