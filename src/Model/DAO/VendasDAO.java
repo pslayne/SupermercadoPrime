@@ -28,6 +28,7 @@ public class VendasDAO extends BaseDAO {
 				ptst.setInt(7, venda.getCaixa().getCodigo());
 				
 				ptst.execute();
+				conn.close();
 			}
 			
 		} catch (SQLException e) {
@@ -42,6 +43,7 @@ public class VendasDAO extends BaseDAO {
 			PreparedStatement ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, venda.getCodigo());
 			ptst.execute();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -56,8 +58,8 @@ public class VendasDAO extends BaseDAO {
 			ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, venda.getCodigo());
 			rs = ptst.executeQuery();
+			conn.close();
 			return rs;
-			
 		} catch(SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -73,8 +75,8 @@ public class VendasDAO extends BaseDAO {
 			ptst = conn.prepareStatement(sql);
 			ptst.setDate(1, new Date(venda.getData().getTimeInMillis()));
 			rs = ptst.executeQuery();
+			conn.close();
 			return rs;
-			
 		} catch(SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -89,8 +91,8 @@ public class VendasDAO extends BaseDAO {
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
+			conn.close();
 			return rs;
-			
 		} catch(SQLException e) {
 			e.printStackTrace();
 			return null;

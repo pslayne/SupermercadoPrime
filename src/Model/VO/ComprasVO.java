@@ -7,7 +7,9 @@ import java.util.Iterator;
 public class ComprasVO {
 	private int codigo;
 	private Calendar data;
+	private String dataS;
 	private Calendar hora;
+	private String horaS;
 	private double valor;
 	private ArrayList<ProdutosVO> produtos;
 	private FuncionariosVO gerente;
@@ -31,13 +33,23 @@ public class ComprasVO {
 	
 	public void setData() {
 		data = Calendar.getInstance();
+		setDataS(data);
 	}
 	
 	public void setData(Calendar data) {
-		if(data != null)
+		if(data != null) {
 			this.data = data;
-		else
+			setDataS(data);
+		} else
 			System.out.println("Data Inválida!");
+	}
+	
+	public String getDataS() {
+		return dataS;
+	}
+	
+	public void setDataS(Calendar data) {
+		dataS = Util.formataHora(data);
 	}
 	
 	public void setData(String d) {
@@ -59,12 +71,14 @@ public class ComprasVO {
 	
 	public void setHora() {
 		hora = Calendar.getInstance();
+		setHoraS(hora);
 	}
 	
 	public void setHora(Calendar hora) {
-		if(hora != null)
+		if(hora != null) {
 			this.hora = hora;
-		else
+			setHoraS(hora);
+		} else
 			System.out.println("Hora Inválida!");
 	}
 	
@@ -75,6 +89,14 @@ public class ComprasVO {
 				this.hora = hora;
 			else System.out.println("Hora inválida!");
 		} else System.out.println("Hora inválida!");
+	}
+	
+	public String getHoraS() {
+		return horaS;
+	}
+	
+	public void setHoraS(Calendar hora) {
+		horaS = Util.formataHora(hora);
 	}
 	
 	public double getValor() {

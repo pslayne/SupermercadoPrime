@@ -19,6 +19,7 @@ public class ProdutosDAO extends BaseDAO {
 			ptst.setDouble(5, produto.getPreco());
 			
 			ptst.execute();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -31,6 +32,7 @@ public class ProdutosDAO extends BaseDAO {
 			PreparedStatement ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, produto.getCodigo());
 			ptst.execute();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -48,6 +50,7 @@ public class ProdutosDAO extends BaseDAO {
 			ptst.setDouble(5, novoProduto.getPreco());
 			ptst.setInt(6, produto.getCodigo());
 			ptst.execute();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -62,6 +65,7 @@ public class ProdutosDAO extends BaseDAO {
 			ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, produto.getCodigo());
 			rs = ptst.executeQuery();
+			conn.close();
 			return rs;
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -78,6 +82,7 @@ public class ProdutosDAO extends BaseDAO {
 			ptst = conn.prepareStatement(sql);
 			ptst.setString(1, produto.getNome());
 			rs = ptst.executeQuery();
+			conn.close();
 			return rs;
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -94,8 +99,9 @@ public class ProdutosDAO extends BaseDAO {
 			ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, produto.getTipo().getCodigo());
 			rs = ptst.executeQuery();
+			conn.close();
 			return rs;
-		}catch(SQLException e) {
+		} catch(SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -110,9 +116,9 @@ public class ProdutosDAO extends BaseDAO {
 			ptst = conn.prepareStatement(sql);
 			ptst.setString(1, produto.getMarca());
 			rs = ptst.executeQuery();
+			conn.close();
 			return rs;
-			
-		}catch(SQLException e) {
+		} catch(SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -120,15 +126,16 @@ public class ProdutosDAO extends BaseDAO {
 	
 	public ResultSet listar() {
 		conn = getConnection();
-		String sql = "select * from produtos";
+		String sql = "select * from produtos order by cod_produto asc";
 		
 		Statement st;
 		ResultSet rs;
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
+			conn.close();
 			return rs;
-		}catch(SQLException e) {
+		} catch(SQLException e) {
 			e.printStackTrace();
 			return null;
 		}

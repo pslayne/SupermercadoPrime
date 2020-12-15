@@ -1,9 +1,11 @@
 package Controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
 import java.util.ResourceBundle;
-import Model.BO.VendasBO;
 import Model.VO.ProdutosVO;
 import Model.VO.Util;
 import View.Telas;
@@ -24,6 +26,8 @@ public class ControllerCaixaVendas implements Initializable{
     @FXML private ImageView adicionar;
     @FXML private ImageView sair;
     @FXML private ImageView ok;
+    @FXML private ImageView edit;
+    @FXML private ImageView delete;
     @FXML private Label total;
     @FXML private TableView<ProdutosVO> produtos;
     @FXML private TableColumn<ProdutosVO, Integer> ID; 
@@ -32,6 +36,7 @@ public class ControllerCaixaVendas implements Initializable{
     @FXML private TableColumn<ProdutosVO, Double> valorUnitario;
     @FXML private TableColumn<ProdutosVO, Double> valorTotal;
     @FXML private Label dataNomeCaixa;
+    @FXML private Label erroSelec;
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -49,18 +54,32 @@ public class ControllerCaixaVendas implements Initializable{
     	initTabela();
 	}
 	
-	 public void initTabela() {
-	    	ID.setCellValueFactory(new PropertyValueFactory<ProdutosVO, Integer>("codigo"));
-	    	produto.setCellValueFactory(new PropertyValueFactory<ProdutosVO, String>("nome"));
-	    	quantidade.setCellValueFactory(new PropertyValueFactory<ProdutosVO, Integer>("quantidadePedido"));
-	    	valorUnitario.setCellValueFactory(new PropertyValueFactory<ProdutosVO, Double>("preco"));
-	    	valorTotal.setCellValueFactory(new PropertyValueFactory<ProdutosVO, Double>("precoTotal"));
-	    	produtos.setItems(itens());
-	    }
+	public void initTabela() {
+	   	ID.setCellValueFactory(new PropertyValueFactory<ProdutosVO, Integer>("codigo"));
+	   	produto.setCellValueFactory(new PropertyValueFactory<ProdutosVO, String>("nome"));
+	   	quantidade.setCellValueFactory(new PropertyValueFactory<ProdutosVO, Integer>("quantidadePedido"));
+	   	valorUnitario.setCellValueFactory(new PropertyValueFactory<ProdutosVO, Double>("preco"));
+	    valorTotal.setCellValueFactory(new PropertyValueFactory<ProdutosVO, Double>("precoTotal"));
+	    produtos.setItems(itens());
 	    
-	    public ObservableList<ProdutosVO> itens(){
-	    	return FXCollections.observableList(Telas.getVenda().getProdutos());
-	    }
+	}
+	    
+	public ObservableList<ProdutosVO> itens(){
+		List<ProdutosVO> p = Telas.getVenda().getProdutos();
+		Iterator<ProdutosVO> i = p.iterator();
+		List<ProdutosVO> r = new ArrayList<ProdutosVO>();
+		double t = 0.0;
+		
+		while(i.hasNext()) {
+			ProdutosVO vo = i.next();
+			double precoTotal = vo.getQuantidadePedido() * vo.getPreco();
+			t += precoTotal;
+			vo.setPrecoTotal(precoTotal);
+			r.add(vo);
+		}
+		total.setText("R$" + t);
+	    return FXCollections.observableList(r);
+	}
 	
     @FXML
     void adicionar(MouseEvent event) {
@@ -69,13 +88,29 @@ public class ControllerCaixaVendas implements Initializable{
 
     @FXML
     void ok(MouseEvent event) {
-    	VendasBO vbo = new VendasBO();
-    	vbo.adicionar(Telas.getVenda());
+    	Telas.popupConfirmar();
+    }
+    
+    @FXML
+    void editar(MouseEvent event) {
+    	ProdutosVO p = produtos.getSelectionModel().getSelectedItem();
+    	if (p!=null) {
+	    	ControllerCaixaProduto.setProd(p);
+	    	ControllerCaixaProduto.setControl(1);
+	    	Telas.telaCaixaProduto();
+    	} else erroSelec.setVisible(true);
+    }
+    
+    @FXML
+    void deletar(MouseEvent event) {
+    	ProdutosVO p = produtos.getSelectionModel().getSelectedItem();
+    	Telas.getVenda().getProdutos().remove(p);
+    	Telas.telaCaixaVendas();
     }
 
     @FXML
     void sair(MouseEvent event) {
-    	Telas.telaInicialCaixa();
+    	Telas.popupCancelar();
     }
 
 

@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="232.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../View/VE/Frame%202%20(1).png" />
+            <Image url="@VE/Frame%202%20(1).png" />
          </image>
       </ImageView>
       <Label layoutX="340.0" layoutY="115.0" text="LOGIN:">
@@ -25,12 +25,12 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <TextField fx:id="login" layoutX="337.0" layoutY="138.0" style="-fx-background-radius: 15px;">
+      <TextField fx:id="login" layoutX="337.0" layoutY="138.0" promptText="login" style="-fx-background-radius: 15px;">
          <effect>
             <DropShadow color="#dddddd" />
          </effect>
       </TextField>
-      <PasswordField fx:id="senha" layoutX="337.0" layoutY="206.0" style="-fx-background-radius: 15px;">
+      <PasswordField fx:id="senha" layoutX="337.0" layoutY="206.0" promptText="senha" style="-fx-background-radius: 15px;">
          <effect>
             <DropShadow color="#dddddd" />
          </effect>

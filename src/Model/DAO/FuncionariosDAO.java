@@ -20,6 +20,7 @@ public class FuncionariosDAO extends BaseDAO{
 			ptst.setString(9, funcionario.getSenha());
 			
 			ptst.execute();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -32,6 +33,7 @@ public class FuncionariosDAO extends BaseDAO{
 			PreparedStatement ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, funcionario.getCodigo());
 			ptst.execute();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -56,6 +58,7 @@ public class FuncionariosDAO extends BaseDAO{
 			
 			ptst.setInt(10, funcionario.getCodigo());
 			ptst.execute();
+			conn.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -71,6 +74,7 @@ public class FuncionariosDAO extends BaseDAO{
 			ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, funcionario.getCodigo());
 			rs = ptst.executeQuery();
+			conn.close();
 			return rs;
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -87,6 +91,7 @@ public class FuncionariosDAO extends BaseDAO{
 			ptst = conn.prepareStatement(sql);
 			ptst.setString(1, funcionario.getCpf());
 			rs = ptst.executeQuery();
+			conn.close();
 			return rs;
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -96,14 +101,14 @@ public class FuncionariosDAO extends BaseDAO{
 	
 	public ResultSet buscarNome(FuncionariosVO funcionario){
 		conn = getConnection();
-		String sql = "select * from funcionarios where nome = ?;";
+		String sql = "select * from funcionarios where nome ilike ?;";
 		PreparedStatement ptst;
 		ResultSet rs;
 		try {
 			ptst = conn.prepareStatement(sql);
 			ptst.setString(1, "%" + funcionario.getNome() + "%");
 			rs = ptst.executeQuery();
-			
+			conn.close();
 			return rs;
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -121,7 +126,7 @@ public class FuncionariosDAO extends BaseDAO{
 			ptst.setString(1, funcionario.getLogin());
 			ptst.setString(2, funcionario.getSenha());
 			rs = ptst.executeQuery();
-			
+			conn.close();
 			return rs;
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -137,6 +142,7 @@ public class FuncionariosDAO extends BaseDAO{
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
+			conn.close();
 			return rs;
 		}catch(SQLException e) {
 			e.printStackTrace();

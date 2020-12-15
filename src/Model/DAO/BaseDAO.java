@@ -10,6 +10,7 @@ public abstract class BaseDAO {
 	String senha = "30317512";
 	
 	public Connection getConnection() {
+		
 		if(conn == null) {
 			try {
 				conn = DriverManager.getConnection(url, user, senha);
@@ -18,7 +19,25 @@ public abstract class BaseDAO {
 				e.printStackTrace();
 				return null;
 			}
-		} else 
-			return conn;
+		} else
+			try {
+				if(conn.isClosed()) {
+					conn = DriverManager.getConnection(url, user, senha);
+					return conn;
+				} else return conn;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			}
+	}
+	
+	public void closeConnection() {
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

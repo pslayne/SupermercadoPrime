@@ -6,69 +6,69 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#pesquisa" prefHeight="400.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerEstoque">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerEstoque">
    <children>
       <ImageView fitHeight="400.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../View/VE/Rectangle%2026.png" />
+            <Image url="@../../../../../../../View/VE/Rectangle%2026.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="30.0" fitWidth="24.0" layoutX="14.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../View/VE/roofing.png" />
+            <Image url="@../../../../../../../View/VE/roofing.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="14.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../View/VE/add_shopping_cart.png" />
+            <Image url="@../../../../../../../View/VE/add_shopping_cart.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="11.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../View/VE/supervisor_account.png" />
+            <Image url="@../../../../../../../View/VE/supervisor_account.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="11.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../View/VE/all_inbox.png" />
+            <Image url="@../../../../../../../View/VE/all_inbox.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="11.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../View/VE/shopping_cart.png" />
+            <Image url="@../../../../../../../View/VE/shopping_cart.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="24.0" fitWidth="18.0" layoutX="29.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../View/VE/Frame.png" />
+            <Image url="@../../../../../../../View/VE/Frame.png" />
          </image>
       </ImageView>
-      <Hyperlink fx:id="vendas" layoutX="38.0" layoutY="131.0" onAction="#goVendas" text="Vendas">
+      <Hyperlink fx:id="vendas" layoutX="38.0" layoutY="131.0" onAction="#goVendas" text="Vendas" textFill="#0a0a0a">
          <font>
             <Font size="14.0" />
          </font>
       </Hyperlink>
-      <Hyperlink fx:id="inicio" layoutX="38.0" layoutY="87.0" onAction="#goInicio" text="Inicio">
+      <Hyperlink fx:id="inicio" layoutX="38.0" layoutY="87.0" onAction="#goInicio" text="Inicio" textFill="#0a0a0a">
          <font>
             <Font size="14.0" />
          </font>
       </Hyperlink>
-      <Hyperlink fx:id="funcionarios" layoutX="34.0" layoutY="168.0" onAction="#goFuncionarios" text="Funcionarios">
+      <Hyperlink fx:id="funcionarios" layoutX="34.0" layoutY="168.0" onAction="#goFuncionarios" text="Funcionarios" textFill="#0a0a0a">
          <font>
             <Font size="14.0" />
          </font>
       </Hyperlink>
-      <Hyperlink fx:id="estoque" layoutX="36.0" layoutY="209.0" onAction="#goEstoque" text="Estoque">
+      <Hyperlink fx:id="estoque" layoutX="36.0" layoutY="209.0" onAction="#goEstoque" text="Estoque" textFill="#0a0a0a">
          <font>
             <Font size="14.0" />
          </font>
       </Hyperlink>
-      <Hyperlink fx:id="compras" layoutX="33.0" layoutY="251.0" onAction="#goCompras" text="Compras">
+      <Hyperlink fx:id="compras" layoutX="33.0" layoutY="251.0" onAction="#goCompras" text="Compras" textFill="#0a0a0a">
          <font>
             <Font size="14.0" />
          </font>
       </Hyperlink>
-      <Hyperlink fx:id="sair" layoutX="49.0" layoutY="340.0" onAction="#goLogin" text="Sair">
+      <Hyperlink fx:id="sair" layoutX="49.0" layoutY="340.0" onAction="#goLogin" text="Sair" textFill="#0a0a0a">
          <font>
             <Font size="14.0" />
          </font>
@@ -76,24 +76,45 @@
       <Separator layoutX="132.0" layoutY="49.0" prefHeight="4.0" prefWidth="693.0" />
       <ImageView fitHeight="19.0" fitWidth="79.0" layoutX="155.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../View/VE/Estoque.png" />
+            <Image url="@../../../../../../../View/VE/Estoque.png" />
          </image>
       </ImageView>
-      <TextField fx:id="pesquisar" layoutX="630.0" layoutY="22.0" style="-fx-background-radius: 15px;" />
-      <ImageView fx:id="pesquisa" fitHeight="28.0" fitWidth="33.0" layoutX="587.0" layoutY="19.0" onMouseClicked="#pesquisa" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="pesquisa" layoutX="561.0" layoutY="21.0" style="-fx-background-radius: 15px;" />
+      <ImageView fx:id="pesquisab" fitHeight="28.0" fitWidth="33.0" layoutX="719.0" layoutY="19.0" onMouseClicked="#pesquisar" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../View/VE/Pesquisa.png" />
+            <Image url="@../../../../../../../View/VE/Pesquisa.png" />
          </image>
       </ImageView>
-      <TableView layoutX="156.0" layoutY="86.0" prefHeight="309.0" prefWidth="623.0">
+      <TableView fx:id="produtos" layoutX="147.0" layoutY="69.0" prefHeight="296.0" prefWidth="605.0">
         <columns>
-          <TableColumn fx:id="tipo" prefWidth="75.0" text="Tipo" />
-          <TableColumn fx:id="codigoProduto" prefWidth="75.0" text="CodigoProduto" />
-            <TableColumn fx:id="nome" prefWidth="146.0" text="Nome" />
+          <TableColumn fx:id="codigo" prefWidth="91.0" text="Código" />
+            <TableColumn fx:id="nome" prefWidth="232.0" text="Nome" />
             <TableColumn fx:id="marca" prefWidth="179.0" text="Marca" />
-            <TableColumn fx:id="quantidade" prefWidth="75.0" text="Quantidade" />
-            <TableColumn fx:id="preco" prefWidth="75.0" text="Preço" />
+            <TableColumn fx:id="quantidade" prefWidth="102.0" text="Quantidade" />
         </columns>
       </TableView>
+      <Label fx:id="erro" layoutX="411.0" layoutY="51.0" text="erro" textFill="RED" visible="false" />
+      <ComboBox fx:id="pesquisac" layoutX="457.0" layoutY="21.0" prefHeight="25.0" prefWidth="97.0" />
+      <ImageView fx:id="delete" fitHeight="30.0" fitWidth="30.0" layoutX="147.0" layoutY="368.0" onMouseClicked="#deletar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@VE/delete_outline.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="edit" fitHeight="30.0" fitWidth="30.0" layoutX="180.0" layoutY="368.0" onMouseClicked="#editar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@VE/mode.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="expand" fitHeight="30.0" fitWidth="30.0" layoutX="219.0" layoutY="368.0" onMouseClicked="#verDetalhes" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@VE/launch.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="add" fitHeight="30.0" fitWidth="30.0" layoutX="718.0" layoutY="367.0" onMouseClicked="#adicionar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@VE/Adicionar.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="gerente" layoutX="15.0" layoutY="51.0" prefHeight="17.0" prefWidth="108.0" />
    </children>
 </Pane>

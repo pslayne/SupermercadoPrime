@@ -13,7 +13,7 @@ public interface InterCargoBO {
 
 	public CargoVO buscarID(CargoVO cargo);
 
-	public List<CargoVO> buscarNome(CargoVO cargo);
+	public CargoVO buscarNome(CargoVO cargo);
 	
 	public List<CargoVO> listar();
 

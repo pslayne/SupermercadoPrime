@@ -11,6 +11,7 @@ public class CargoDAO extends BaseDAO{
 			PreparedStatement ptst = conn.prepareStatement(sql);
 			ptst.setString(1, cargo.getNome());
 			ptst.execute();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -23,6 +24,7 @@ public class CargoDAO extends BaseDAO{
 			PreparedStatement ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, cargo.getCodigo());
 			ptst.execute();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -40,6 +42,7 @@ public class CargoDAO extends BaseDAO{
 				ptst.setString(1, novoCargo.getNome());
 				ptst.setInt(2, cargo.getCodigo());
 				ptst.execute();
+				conn.close();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -55,6 +58,7 @@ public class CargoDAO extends BaseDAO{
 			ptst = conn.prepareStatement(sql);
 			ptst.setInt(1, cargo.getCodigo());
 			rs = ptst.executeQuery();
+			conn.close();
 			return rs;
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -71,11 +75,13 @@ public class CargoDAO extends BaseDAO{
 			ptst = conn.prepareStatement(sql);
 			ptst.setString(1, cargo.getNome());
 			rs = ptst.executeQuery();
+			conn.close();
 			return rs;
 		} catch(SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
+		
 	}
 	
 	public ResultSet listar() {
@@ -86,6 +92,7 @@ public class CargoDAO extends BaseDAO{
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
+			conn.close();
 			return rs;
 		} catch(SQLException e) {
 			e.printStackTrace();

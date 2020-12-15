@@ -7,15 +7,26 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Telas extends Application{
 	private static Stage primaryStage;
+	private static Stage popup;
 	private static FuncionariosVO user;
+	private static FuncionariosVO fsel;
 	private static VendasVO venda;
 
 	public static FuncionariosVO getUser() {
 		return user;
+	}
+
+	public static void setFsel(FuncionariosVO fsel) {
+		Telas.fsel = fsel;
+	}
+	
+	public static FuncionariosVO getFsel() {
+		return fsel;
 	}
 
 	public static void setUser(FuncionariosVO user) {
@@ -40,6 +51,14 @@ public class Telas extends Application{
 	
 	public void setPrimaryStage(Stage primaryStage) {
 		Telas.primaryStage = primaryStage;
+	}
+	
+	public static Stage getPopup() {
+		return popup;
+	}
+	
+	public static void setPopup(Stage popup) {
+		Telas.popup = popup;
 	}
 	
 	@Override
@@ -87,13 +106,47 @@ public class Telas extends Application{
 	}
 	
 	public static void telaCaixaProduto() {
+		popup = new Stage();
+		popup.initModality(Modality.APPLICATION_MODAL);
+		popup.setTitle("Adicionar Produtos");
 		Parent root;
 		try {
 			root = FXMLLoader.load(Telas.class.getResource("TelaCaixaProduto.fxml"));
 			Scene cena = new Scene(root);
-		primaryStage.setScene(cena);
+			popup.setScene(cena);
+			popup.showAndWait();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+	}
+	
+	public static void popupConfirmar() {
+		popup = new Stage();
+		popup.initModality(Modality.APPLICATION_MODAL);
+		popup.setTitle("Adicionar Produtos");
+		Parent root;
+		try {
+			root = FXMLLoader.load(Telas.class.getResource("PopupConfirmar.fxml"));
+			Scene cena = new Scene(root);
+			popup.setScene(cena);
+			popup.showAndWait();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}  
+	}
+	
+	public static void popupCancelar() {
+		popup = new Stage();
+		popup.initModality(Modality.APPLICATION_MODAL);
+		popup.setTitle("Adicionar Produtos");
+		Parent root;
+		try {
+			root = FXMLLoader.load(Telas.class.getResource("PopupCancelar.fxml"));
+			Scene cena = new Scene(root);
+			popup.setScene(cena);
+			popup.showAndWait();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}  
 	}
@@ -146,6 +199,18 @@ public class Telas extends Application{
 		}  
 	}
 	
+	public static void telaVendasItens() {
+		Parent root;
+		try {
+			root = FXMLLoader.load(Telas.class.getResource("TelaVendasItens.fxml"));
+			Scene cena = new Scene(root);
+			primaryStage.setScene(cena);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+	}
+	
 	public static void telaEstoque() {
 		Parent root;
 		try {
@@ -162,6 +227,18 @@ public class Telas extends Application{
 		Parent root;
 		try {
 			root = FXMLLoader.load(Telas.class.getResource("TelaFuncionarios.fxml"));
+			Scene cena = new Scene(root);
+			primaryStage.setScene(cena);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+	}
+	
+	public static void telaFuncionariosEdit() {
+		Parent root;
+		try {
+			root = FXMLLoader.load(Telas.class.getResource("TelaFuncionariosEdit.fxml"));
 			Scene cena = new Scene(root);
 			primaryStage.setScene(cena);
 		} catch (IOException e) {

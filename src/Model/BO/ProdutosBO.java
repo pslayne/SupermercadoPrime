@@ -42,6 +42,7 @@ public class ProdutosBO implements InterProdutosBO{
 				t.setCodigo((rs.getInt("id_tipo")));
 				TipoBO tbo = new TipoBO();
 				t = tbo.buscarID(t);
+				
 				p.setTipo(t);
 				p.setNome(rs.getString("nome"));
 				p.setMarca(rs.getString("marca"));
@@ -71,6 +72,12 @@ public class ProdutosBO implements InterProdutosBO{
 				TipoBO tbo = new TipoBO();
 				t = tbo.buscarID(t);
 				
+				p.setTipo(t);
+				p.setNome(rs.getString("nome"));
+				p.setMarca(rs.getString("marca"));
+				p.setQuantidadeEstoque(rs.getInt("quantidade"));
+				p.setPreco(rs.getDouble("preco"));
+				
 				produtos.add(p);
 			}
 			return produtos;
@@ -95,6 +102,12 @@ public class ProdutosBO implements InterProdutosBO{
 				TipoBO tbo = new TipoBO();
 				t = tbo.buscarID(t);
 				
+				p.setTipo(t);
+				p.setNome(rs.getString("nome"));
+				p.setMarca(rs.getString("marca"));
+				p.setQuantidadeEstoque(rs.getInt("quantidade"));
+				p.setPreco(rs.getDouble("preco"));
+				
 				produtos.add(p);
 			}
 			return produtos;
@@ -118,6 +131,12 @@ public class ProdutosBO implements InterProdutosBO{
 				t.setCodigo((rs.getInt("id_tipo")));
 				TipoBO tbo = new TipoBO();
 				t = tbo.buscarID(t);
+				
+				p.setTipo(t);
+				p.setNome(rs.getString("nome"));
+				p.setMarca(rs.getString("marca"));
+				p.setQuantidadeEstoque(rs.getInt("quantidade"));
+				p.setPreco(rs.getDouble("preco"));
 				
 				produtos.add(p);
 			}
@@ -158,9 +177,15 @@ public class ProdutosBO implements InterProdutosBO{
 			}
 	}
 	
+	public void atualizar(ProdutosVO produto, ProdutosVO novoProduto) {
+		if(produto != null && novoProduto != null)
+			dao.atualizar(produto, novoProduto);
+		else System.out.println("inválido");
+	}
+	
 	public List<ProdutosVO> listar(){
 		ResultSet rs = dao.listar();
-		ArrayList<ProdutosVO> produtos = new ArrayList<ProdutosVO>();
+		List<ProdutosVO> produtos = new ArrayList<ProdutosVO>();
 		
 		try {
 			while(rs.next()) {
@@ -171,10 +196,17 @@ public class ProdutosBO implements InterProdutosBO{
 				t.setCodigo((rs.getInt("id_tipo")));
 				TipoBO tbo = new TipoBO();
 				t = tbo.buscarID(t);
+
+				p.setTipo(t);
+				p.setNome(rs.getString("nome"));
+				p.setMarca(rs.getString("marca"));
+				p.setQuantidadeEstoque(rs.getInt("quantidade"));
+				p.setPreco(rs.getDouble("preco"));
 				
 				produtos.add(p);
 			}
 			return produtos;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;

@@ -2,6 +2,7 @@ package Model.BO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Iterator;
 import Model.DAO.VendasDAO;
@@ -260,9 +261,45 @@ public class VendasBO implements InterVendasBO{
 		return vendasR;
 	}
 	
+	public List<VendasVO> buscarData(VendasVO venda, String tipo) {
+		List<VendasVO> vendas = listar();
+		List<VendasVO> r = new ArrayList<VendasVO>();
+		
+		int year = venda.getData().get(Calendar.YEAR);
+		int week = venda.getData().get(Calendar.WEEK_OF_YEAR);
+		int month = venda.getData().get(Calendar.MONTH);
+		
+		if(tipo.equalsIgnoreCase("semana")) {
+			for(int i = 0; i < vendas.size(); i++) {
+				int ano = vendas.get(i).getData().get(Calendar.YEAR);
+				int semana = vendas.get(i).getData().get(Calendar.WEEK_OF_YEAR);
+				
+				if(ano == year && semana == week)
+					r.add(vendas.get(i));
+			}
+		} else if (tipo.equalsIgnoreCase("mês")) {
+			for(int i = 0; i < vendas.size(); i++) {
+				int ano = vendas.get(i).getData().get(Calendar.YEAR);
+				int mes = vendas.get(i).getData().get(Calendar.MONTH);
+				
+				if(ano == year && mes == month)
+					r.add(vendas.get(i));
+			}
+		} else if(tipo.equalsIgnoreCase("ano")) {
+			for(int i = 0; i < vendas.size(); i++) {
+				int ano = vendas.get(i).getData().get(Calendar.YEAR);
+				
+				if(ano == year)
+					r.add(vendas.get(i));
+			}
+		}
+		
+		return r;
+	}
+	
 	public List<VendasVO> listar(){
 		ResultSet rs = dao.listar();
-		ArrayList<VendasVO> vendas = new ArrayList<VendasVO>();
+		List<VendasVO> vendas = new ArrayList<VendasVO>();
 		
 		int ultimoId = 0, cont = -1;
 		try {
@@ -296,7 +333,7 @@ public class VendasBO implements InterVendasBO{
 					f = func.buscarID(f);
 					v.setCaixa(f);
 					
-					ArrayList<ProdutosVO> produtos = new ArrayList<ProdutosVO>();
+					List<ProdutosVO> produtos = new ArrayList<ProdutosVO>();
 					ProdutosVO prod = new ProdutosVO(); 
 					ProdutosBO pbo = new ProdutosBO();
 					prod.setCodigo(rs.getInt("cod_produto"));
@@ -326,10 +363,11 @@ public class VendasBO implements InterVendasBO{
 		}
 		
 		Iterator<VendasVO> iterator = vendas.iterator();
-		ArrayList<VendasVO> vendasR = new ArrayList<VendasVO>();
+		List<VendasVO> vendasR = new ArrayList<VendasVO>();
 		
 		while(iterator.hasNext()) {
 			VendasVO c = iterator.next();
+			
 			Iterator<ProdutosVO> iteratorp = c.getProdutos().iterator();
 			double valor = 0.0;
 			int quantidade = 0, con = 0;
@@ -345,6 +383,7 @@ public class VendasBO implements InterVendasBO{
 			
 			c.setValor(valor);
 			c.setQuantidade(quantidade);
+			vendasR.add(c);
 		}
 			
 		return vendasR;

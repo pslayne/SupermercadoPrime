@@ -6,36 +6,39 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#ok" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerCaixaProduto">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="277.0" prefWidth="303.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerCaixaProduto">
    <children>
-      <Separator layoutY="49.0" prefHeight="5.0" prefWidth="600.0" />
-      <ImageView fitHeight="19.0" fitWidth="72.0" layoutX="40.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@VE/Caixa.png" />
-         </image>
-      </ImageView>
-      <TextField fx:id="codigoProduto" layoutX="214.0" layoutY="155.0" prefHeight="30.0" prefWidth="174.0" style="-fx-background-radius: 15px;" />
-      <Label layoutX="231.0" layoutY="123.0" prefHeight="20.0" prefWidth="141.0" text="Codigo do produto:">
+      <TextField fx:id="codigoProduto" layoutX="69.0" layoutY="94.0" prefHeight="30.0" prefWidth="174.0" style="-fx-background-radius: 15px;" />
+      <Label layoutX="85.0" layoutY="68.0" prefHeight="20.0" prefWidth="141.0" text="Codigo do produto:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="quantidade" layoutX="213.0" layoutY="225.0" prefHeight="30.0" prefWidth="174.0" style="-fx-background-radius: 15px;" />
-      <Label layoutX="231.0" layoutY="200.0" text="Quantidade:">
+      <TextField fx:id="quantidade" layoutX="69.0" layoutY="165.0" prefHeight="30.0" prefWidth="174.0" style="-fx-background-radius: 15px;" />
+      <Label layoutX="85.0" layoutY="139.0" text="Quantidade:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <ImageView fx:id="ok" fitHeight="30.0" fitWidth="37.0" layoutX="279.0" layoutY="288.0" onMouseClicked="#ok" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ok" fitHeight="30.0" fitWidth="37.0" layoutX="171.0" layoutY="204.0" onMouseClicked="#ok" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@VE/OK.png" />
+            <Image url="@../../../../../../../View/VE/OK.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="cancelar" fitHeight="37.0" fitWidth="30.0" layoutX="329.0" layoutY="288.0" onMouseClicked="#cancelar" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cancelar" fitHeight="37.0" fitWidth="30.0" layoutX="209.0" layoutY="204.0" onMouseClicked="#cancelar" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@VE/Sair.png" />
+            <Image url="@../../../../../../../View/VE/Sair.png" />
          </image>
       </ImageView>
+      <Label fx:id="codigo" alignment="CENTER" layoutX="114.0" layoutY="42.0" prefHeight="17.0" prefWidth="76.0" text="código inválido" textAlignment="CENTER" textFill="RED" visible="false">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="qntd" alignment="CENTER" layoutX="104.0" layoutY="43.0" text="quantidade insuficiente" textFill="RED" visible="false">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

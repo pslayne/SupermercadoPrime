@@ -13,8 +13,8 @@ public class CargoBO implements InterCargoBO{
 
 	public void adicionar(CargoVO cargo) {
 		if(cargo != null) {
-			List<CargoVO> resultado = buscarNome(cargo);
-			if(resultado.isEmpty()) 
+			CargoVO resultado = buscarNome(cargo);
+			if(resultado != null) 
 				dao.inserir(cargo);
 			else System.out.println("Este cargo já existe");
 		} else System.out.println("Cargo inválido");
@@ -32,13 +32,9 @@ public class CargoBO implements InterCargoBO{
 
 	public void editar(CargoVO cargo, CargoVO novoCargo) {
 		if(cargo != null && novoCargo != null) {
-			List<CargoVO> resultado = buscarNome(cargo);
+			CargoVO resultado = buscarNome(cargo);
 			
-			if(!resultado.isEmpty()) { 
-				Iterator<CargoVO> it = resultado.iterator();
-				CargoVO i = it.next();
-				cargo.setCodigo(i.getCodigo());
-				
+			if(resultado != null) { 
 				dao.atualizar(cargo, novoCargo);
 			} else System.out.println("Este cargo não existe");
 		} else System.out.println("Cargo inválido");
@@ -60,19 +56,17 @@ public class CargoBO implements InterCargoBO{
 		
 	}
 
-	public List<CargoVO> buscarNome(CargoVO cargo) {
+	public CargoVO buscarNome(CargoVO cargo) {
 		ResultSet rs = dao.buscarNome(cargo);
-		List<CargoVO> cargos = new ArrayList<CargoVO>();
 		
 		try {
-			while(rs.next()) {
+			if(rs.next()) {
 				CargoVO c = new CargoVO();
 				c.setCodigo((rs.getInt("id_cargo")));
 				c.setNome(rs.getString("nome_cargo"));
 				
-				cargos.add(c);
-			}
-			return cargos;
+				return c;
+			} else return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;

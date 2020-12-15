@@ -6,16 +6,17 @@ import java.util.GregorianCalendar;
 public class Util {
 	public static String formataData(Calendar data) {
 		String d;
-		int ano = data.get(Calendar.YEAR);
-		int mes = data.get(Calendar.MONTH);
 		int dia = data.get(Calendar.DATE);
+		int mes = data.get(Calendar.MONTH);
+		int ano = data.get(Calendar.YEAR);
 		
+		mes += 1;
 		if (dia < 10 && mes < 10)
-			d = 0 + "" + dia + "/" + 0 + "" + mes + "/" + ano;
+			d = "0" + dia + "/0" + mes + "/" + ano;
 		else if (dia < 10)
-			d = 0 + "" + dia + "/" + mes + "/" + ano;
+			d = "0" + dia + "/" + mes + "/" + ano;
 		else if (mes < 10)
-			d = dia + "/" + 0 + "" + mes + "/" + ano;
+			d = dia + "/0" + mes + "/" + ano;
 		else 
 			d = dia + "/" + mes + "/" + ano;
 		
@@ -28,6 +29,8 @@ public class Util {
 		int dia = Integer.parseInt(d.substring(0, 2));
 		int mes = Integer.parseInt(d.substring(3, 5));
 		int ano = Integer.parseInt(d.substring(6, 10));
+		
+		mes -= 1;
 		
 		if(dia > 0 && dia <= 31 && mes > 0 && mes <= 12)
 			if (mes == 2 && dia > 28)

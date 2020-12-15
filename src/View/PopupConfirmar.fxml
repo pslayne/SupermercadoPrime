@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="137.0" prefWidth="242.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerPopupConfirmar">
+   <children>
+      <Label fx:id="msg" alignment="CENTER" layoutX="50.0" layoutY="27.0" prefHeight="20.0" prefWidth="141.0" style="-fx-font-weight: bold;" text="Confirmar venda?">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="ok" fitHeight="30.0" fitWidth="37.0" layoutX="73.0" layoutY="69.0" onMouseClicked="#ok" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../View/VE/OK.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cancelar" fitHeight="37.0" fitWidth="30.0" layoutX="145.0" layoutY="69.0" onMouseClicked="#cancelar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../View/VE/Sair.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

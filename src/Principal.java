@@ -30,8 +30,11 @@ public class Principal {
 		
 		vo.setProdutos(produtos);
 		
-		bo.adicionar(vo);
+		//bo.adicionar(vo);
 		//bo.mostrar(bo.buscaCaixaData(vo));
 		//bo.mostrar(bo.listar());
+		
+		//vo = bo.buscarID(vo);
+		//bo.mostrar(bo.buscarData(vo));
 	}
 }

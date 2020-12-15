@@ -15,7 +15,8 @@ public class ComprasBO implements InterComprasBO{
 	
 	public void adicionar(ComprasVO compra) {
 		if(compra != null) {
-			
+			List<ComprasVO> lista = listar();
+			compra.setCodigo(lista.get(lista.size() - 1).getCodigo() + 1);
 			FuncionariosBO func = new FuncionariosBO();
 			FuncionariosVO f = func.buscarID(compra.getGerente());
 			if(f != null && f.getCargo().getNome().equalsIgnoreCase("gerente")) {

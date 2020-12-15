@@ -23,7 +23,7 @@
             <Image url="@VE/Caixa.png" />
          </image>
       </ImageView>
-      <Label fx:id="dataNomeCaixa" layoutX="132.0" layoutY="10.0" prefHeight="29.0" prefWidth="168.0" />
+      <Label fx:id="dataNomeCaixa" layoutX="132.0" layoutY="10.0" prefHeight="29.0" prefWidth="374.0" />
       <ImageView fx:id="sair" fitHeight="35.0" fitWidth="46.0" layoutX="508.0" layoutY="7.0" onMouseClicked="#sair" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@VE/Sair.png" />

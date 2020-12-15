@@ -8,10 +8,12 @@ public class VendasVO {
 	private int codigo;
 	private int quantidade;
 	private Calendar data;
+	private String dataS;
 	private Calendar hora;
 	private String horaS;
 	private double valor;
 	private FuncionariosVO caixa;
+	private String caixaS;
 	private List <ProdutosVO> produtos;
 	
     // getters e setters
@@ -48,19 +50,29 @@ public class VendasVO {
 	}
 	
 	public void setData(Calendar data) {
-		if(data != null)
+		if(data != null) {
 			this.data = data;
-		else
+			setDataS();
+		} else
 			System.out.println("Data Inválida!");
 	}
 	
 	public void setData(String d) {
 		if (d != null && !d.isEmpty()) {
 			Calendar data = Util.formataData(d);
-			if(data != null)		
+			if(data != null) {		
 				this.data = data;
-			else System.out.println("Data inválida!");
+				setDataS();
+			} else System.out.println("Data inválida!");
 		} else System.out.println("Data inválida!");
+	}
+	
+	public String getDataS() {
+		return dataS;
+	}
+	
+	public void setDataS() {
+		dataS = getData(getData());
 	}
 	
 	public Calendar getHora() {
@@ -114,10 +126,19 @@ public class VendasVO {
 	}
 	
 	public void setCaixa(FuncionariosVO caixa) {
-		if (caixa != null) 
+		if (caixa != null) {
 			this.caixa = caixa;
-		else
+			setCaixaS(caixa.getNome());
+		} else
 			System.out.println("Caixa inválido!");
+	}
+	
+	public String getCaixaS() {
+		return caixaS;
+	}
+	
+	public void setCaixaS(String caixaS) {
+		this.caixaS = caixaS;
 	}
 	
 	public List <ProdutosVO> getProdutos() {

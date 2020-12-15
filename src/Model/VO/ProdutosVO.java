@@ -54,9 +54,9 @@ public class ProdutosVO {
 	}
 	
 	public void setTipo(TipoVO tipo) {
-		if(tipo != null)
+		if(tipo != null) 
 		   this.tipo = tipo;
-		else
+		 else
 			System.out.println("Tipo inválido");
 	}
 	

@@ -15,8 +15,15 @@ public class FuncionariosBO implements InterFuncionariosBO{
 	public void adicionar(FuncionariosVO funcionario) {
 		if(funcionario != null) {
 			List<FuncionariosVO> resultado = buscarCPF(funcionario);
+			
+			CargoBO cbo = new CargoBO();
+			CargoVO cvo = new CargoVO();
+			cvo = cbo.buscarNome(cvo);
+			funcionario.setCargo(cvo);
+			
 			if(resultado.isEmpty()) 
 				dao.inserir(funcionario);
+			
 			else System.out.println("Este funcionário já existe");
 		} else System.out.println("Funcionário inválido");
 	}
@@ -249,6 +256,21 @@ public class FuncionariosBO implements InterFuncionariosBO{
 			return null;
 		}
 		
+	}
+	
+	public List<FuncionariosVO> buscarCargo(FuncionariosVO funcionario) {
+		List<FuncionariosVO> lista = listar();
+		List<FuncionariosVO> r = new ArrayList<FuncionariosVO>();
+		
+		CargoBO cbo = new CargoBO();
+		funcionario.setCargo(cbo.buscarNome(funcionario.getCargo()));
+		
+		for(int i = 0; i < lista.size(); i++) {
+			if(lista.get(i).getCargo().getNome().equalsIgnoreCase(funcionario.getCargo().getNome()))
+				r.add(lista.get(i));
+		}
+		
+		return r;
 	}
 	
 	public List<FuncionariosVO> listar() {

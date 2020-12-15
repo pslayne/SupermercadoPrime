@@ -19,6 +19,7 @@ public class LoginController {
     
     
 	public void autenticar(ActionEvent event) {
+		erroAutenticacao.setVisible(false);
     	FuncionariosVO fvo = new FuncionariosVO();
     	fvo.setLogin(login.getText());
     	fvo.setSenha(senha.getText());

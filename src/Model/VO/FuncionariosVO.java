@@ -10,6 +10,7 @@ public class FuncionariosVO {
      private String email;
      private String endereco;
      private CargoVO cargo;
+     private String cargoS;
      private double salario;
      private String login;
      private String senha;
@@ -103,10 +104,19 @@ public class FuncionariosVO {
 	}
 	
 	public void setCargo(CargoVO cargo) {
-		if(cargo != null) 
+		if(cargo != null) {
 			this.cargo = cargo;
-		else
+			setCargoS();
+		} else
 			System.out.println("Cargo inválido");
+	}
+	
+	public String getCargoS() {
+		return cargoS;
+	}
+	
+	public void setCargoS() { 
+		cargoS = cargo.getNome();
 	}
 	
 	public double getSalario() {
@@ -114,10 +124,7 @@ public class FuncionariosVO {
 	}
 	
 	public void setSalario(double salario) {
-		if (salario > 0) 
 			this.salario = salario;
-		else
-			System.out.println("Salário inválido");
 	}
 	
 	public String getLogin() {
